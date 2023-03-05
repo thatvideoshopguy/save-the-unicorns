@@ -1,0 +1,32 @@
+{
+    "python.defaultInterpreterPath": "./venv/bin/python",
+    "python.terminal.activateEnvironment": true,
+    "python.linting.enabled": true,
+    // "python.linting.pylintEnabled": true,
+    // "python.linting.pylintPath": "./venv/bin/pylint",
+    // "python.linting.pylintArgs": [
+    //   // "--disable=C0112", // Empty docstring
+    //   // "--disable=C0114", // Missing module docstring
+    //   // "--disable=C0115", // Missing class docstring
+    //   // "--disable=C0116", // Missing function or method docstring
+    //   // "--disable=C0301", // Line too long
+    //   // "--disable=W0511", // TODO comment
+    //   // "--disable=C0115", // Too few public methods
+    //   // "--disable=E0401", // Import not used
+    // ],
+    // "python.formatting.provider": "black",
+    // "python.formatting.blackArgs": [
+    //   "--line-length",
+    //   "120",
+    // ],
+    "terminal.integrated.profiles.osx": {
+      "myenv": {
+        "path": "/bin/zsh",
+        "args": [
+          "-c",
+          "source ./venv/bin/activate; exec zsh"
+        ]
+      }
+    },
+    "terminal.integrated.defaultProfile.osx": "myenv",
+  }
