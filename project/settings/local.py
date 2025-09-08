@@ -10,10 +10,11 @@ TEMPLATES[0]["OPTIONS"]["debug"] = True
 DATABASES = {
     "default": {
         "ENGINE": "django.contrib.gis.db.backends.postgis",
-        "NAME": os.environ.get("DJANGO_DATABASE_NAME", f"{PROJECT_SLUG}_django"),
-        "USER": "",
-        "PASSWORD": "",
-        "PORT": "",
+        "NAME": os.environ.get("DJANGO_DATABASE_NAME"),
+        "USER": os.environ.get("DJANGO_DATABASE_USERNAME"),
+        "PASSWORD": os.environ.get("DJANGO_DATABASE_PASSWORD"),
+        "HOST": os.environ.get("DJANGO_DATABASE_HOST"),
+        "PORT": os.environ.get("DJANGO_DATABASE_PORT"),
     }
 }
 
