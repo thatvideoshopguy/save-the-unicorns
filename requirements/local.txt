@@ -6,3 +6,4 @@ ipdb==0.13.13
 pywatchman==3.0.0
 tox==4.27.0
 tox-uv==1.26.1
+psycopg-binary==3.2.10

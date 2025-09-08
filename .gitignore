@@ -1,4 +1,6 @@
+###############
 ### PYTHON ###
+###############
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -217,8 +219,9 @@ __marimo__/
 # Streamlit
 .streamlit/secrets.toml
 
-
+###############
 ### PROJECT ###
+###############
 
 /htdocs/media
 /htdocs/static
@@ -245,3 +248,4 @@ static/dist
 
 # DS Store files
 *.DS_Store
+/shared-libs/
