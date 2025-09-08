@@ -1,0 +1,66 @@
+name: CI
+on: pull_request
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+jobs:
+  test:
+    name: Test -- tox
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+          ref: ${{ github.event.pull_request.head.sha }}
+      - name: Install Ubuntu packages
+        run: |
+          sudo apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            libgdal34t64
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: 'pip'
+          cache-dependency-path: 'requirements/*.txt'
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: Node.js npm cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.npm
+            **/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('.nvmrc', 'package.json', 'package-lock.json') }}
+      - name: Configure Postgres (for faster tests)
+        env:
+          PGHOST: localhost
+          PGUSER: postgres
+          PGPASSWORD: password
+        run: |
+          psql -c "ALTER SYSTEM SET fsync=off;"
+          psql -c "ALTER SYSTEM SET full_page_writes=off;"
+          psql -c "SELECT pg_reload_conf();"
+      - name: Run tests
+        env:
+          PGHOST: localhost
+          PGUSER: postgres
+          PGPASSWORD: password
+          RUFF_OUTPUT_FORMAT: github
+          TOX_OVERRIDE: "testenv.pass_env=PG*,RUFF_OUTPUT_FORMAT"
+        run: |
+          pip install $(grep -E "^(tox|tox-uv)==" requirements/local.txt)
+          echo "::add-matcher::.github/workflows/matchers/ruff.json"
+          tox
+    services:
+      postgres:
+        image: postgis/postgis:17-3.5-alpine
+        env:
+          POSTGRES_PASSWORD: password
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
