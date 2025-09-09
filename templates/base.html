@@ -11,6 +11,7 @@
     </title>
     <link rel="stylesheet" href="{% static 'dist/css/styles.css' %}" />
     <link rel="canonical" href="{{ request.build_absolute_uri }}" />
+    {% include 'includes/fonts.html' %}
     {% include 'includes/meta.html' %}
     {% if BROWSERSYNC_URL %}
       <script src="{{ BROWSERSYNC_URL }}" async></script>
@@ -25,11 +26,7 @@
   </head>
   <body>
     {% if DEMO_SITE %}
-      <div class="demo-announcement">
-        <div class="container">
-          {% translate 'This site is in development. Any changes made here will not be transferred to the production build.' %}
-        </div>
-      </div>
+      {% include 'demo.html' %}
     {% endif %}
     <header class="header">
       {% include 'includes/header.html' %}

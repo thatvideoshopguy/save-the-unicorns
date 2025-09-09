@@ -49,3 +49,34 @@ input[type='submit'] {
         }
     }
 }
+
+
+.button {
+    &.is-donate {
+        background-color: $donate-yellow;
+        color: $text-dark;
+        border: none;
+        border-radius: 25px;
+        font-family: "Raleway", sans-serif;
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        padding: 0.75rem 2rem;
+        font-size: 0.95rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background-color: #{color.adjust($donate-yellow, $lightness: -5%)};
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        &:focus {
+            box-shadow: 0 0 0 0.125em rgba($donate-yellow, 0.25);
+        }
+
+        &:active {
+            transform: translateY(0);
+        }
+    }
+}

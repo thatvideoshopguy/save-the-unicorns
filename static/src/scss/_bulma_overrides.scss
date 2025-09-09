@@ -1,0 +1,11 @@
+@use "sass:color";
+@use "variables" as *;
+
+@use "bulma/sass" with (
+  $family-primary: '"Raleway", sans-serif',
+  $weight-bold: 900,
+  $navbar-background-color: transparent,
+  $navbar-item-color: $text-dark,
+  $navbar-height: 4rem,
+  $yellow: $donate-yellow
+);
