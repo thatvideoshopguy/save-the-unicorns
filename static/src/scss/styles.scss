@@ -1,1 +1,15 @@
-@import 'node_modules/bulma/bulma.scss';
+@use 'node_modules/bulma/bulma.scss';
+
+@use 'variables';
+@use 'typography';
+@use 'accessibility';
+
+@use 'mixins/mixins';
+
+@use 'layout/layout';
+@use 'elements/elements';
+@use 'forms/forms';
+
+* {
+    box-sizing: border-box;
+}
