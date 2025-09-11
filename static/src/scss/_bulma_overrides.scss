@@ -3,17 +3,20 @@
 
 @use "bulma/sass" with (
   $family-primary: '"Lato", sans-serif',
-  $family-secondary: '"Corben", sans-serif',
-  $weight-bold: 400,
+  $family-secondary: $family-tertiary,
+  $body-weight: 400,
+  $weight-bold: 600,
   $navbar-background-color: transparent,
   $navbar-item-color: $color-black,
   $navbar-height: 4rem,
-  $footer-padding: 1.5rem,
   $body-color: $color-black,
   $title-family: '"Corben", sans-serif',
   $title-weight: 700,
   $title-size: 7rem,
   $title-color: $color-title,
+  $footer-background-color: $color-primary-dark,
+  $footer-color: $color-white,
+  $footer-padding: 1.5rem 3rem
 );
 
 

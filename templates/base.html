@@ -25,24 +25,21 @@
     {% endif %}
   </head>
   <body>
-    {% if DEMO_SITE %}
-      {% include 'demo.html' %}
-    {% endif %}
-    <header class="header">
       {% include 'includes/header.html' %}
-    </header>
-    <main class="main">
-      {% block main %}
-        <div id="app">
-        </div>
-      {% endblock main %}
-    </main>
-    <footer class="footer inverted">
+
+      <main class="main">
+        {% block main %}
+          <div id="app">
+          </div>
+        {% endblock main %}
+      </main>
+
+
       {% include 'includes/footer.html' %}
-    </footer>
-    <script src="{% static 'dist/js/app.js' %}"></script>
-    <script src="{% static 'dist/js/base.js' %}"></script>
-    {% block extra_scripts %}
-    {% endblock extra_scripts %}
+
+      <script src="{% static 'dist/js/app.js' %}"></script>
+      <script src="{% static 'dist/js/base.js' %}"></script>
+      {% block extra_scripts %}
+      {% endblock extra_scripts %}
   </body>
 </html>

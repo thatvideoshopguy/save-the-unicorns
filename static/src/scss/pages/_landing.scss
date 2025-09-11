@@ -1,13 +1,42 @@
 @use '../mixins/mixins' as *;
 @use '../variables' as *;
 
-.hero {
+.hero-section {
     background-color: $color-background;
+
+    .chevron-down {
+        background-color: $color-accent;
+        mask: url(../sprite/chevron_down.svg);
+        mask-repeat: no-repeat;
+        mask-size: 6rem;
+        height: 6rem;
+        width: 6rem;
+    }
+
 }
 
-.about-image {
-    background: url(../img/about.png) left center/contain no-repeat;
-    min-width: 500px;
-    min-height: 500px;
+.about-section{
+    .about-image {
+        background-image: url(../img/about.png);
+        background-position-x: center;
+        background-position-y: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        min-width: 500px;
+        min-height: 500px;
+    }
+
+    h1.title{
+        color: $color-black;
+        font-size: 2rem;
+    }
+
 }
 
+.blog-section{
+    background-color: $color-secondary;
+}
+
+.sightings-section{
+    background-color: $color-primary;
+}

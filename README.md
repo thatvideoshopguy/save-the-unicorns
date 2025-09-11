@@ -1,13 +1,22 @@
 # Save The Unicorns
 
-_Project top level description goes here_
+This is a demo project using the
 
-- Demo site: _TODO_
-- Live site: _TODO_
-- Slack channels: _TODO_
-- Notion documentation: _TODO_
+- Demo site: https://savetheunicorns.kylestevenson.io
 
-## Development setup
+## Quickstart
+
+```bash
+git clone
+```
+
+This project uses GDAL libraries, that you need to install localy
+
+```bash
+sudo apt-get update && sudo apt-get install -y gdal-bin libgdal-dev libgeos-dev
+```
+
+
 
 It's recommended you use [virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)
 and [The Developer Society Dev Tools](https://github.com/developersociety/tools).
