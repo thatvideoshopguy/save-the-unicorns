@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags wagtailimages_tags %}
+
+{% block main %}
+  <section class="section">
+    <div class="container">
+
+      <div class="columns">
+        <div class="column is-8">
+          <div class="featured-image mb-6">
+            {% if page.featured_image %}
+              <figure>
+                {% image page.featured_image width-400 alt=page.featured_image.default_alt_text %}
+                {% if page.featured_image.caption %}
+                  <figcaption class="has-text-grey is-size-7 mt-2">
+                    {{ page.featured_image.description }}
+                  </figcaption>
+                {% endif %}
+              </figure>
+            {% else %}
+              {% include "blog/partials/placeholder_image.html" %}
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="column is-4">
+          <div class="blog-date">
+            {{ page.date|date:"d F Y"|upper }}
+          </div>
+
+          <h1 class="blog-title">
+            {{ page.title }}
+          </h1>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <article>
+
+            {% if page.intro %}
+              <div class="blog-intro">
+                {{ page.intro }}
+              </div>
+            {% endif %}
+
+            <div class="blog-content content">
+              {{ page.body|richtext }}
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

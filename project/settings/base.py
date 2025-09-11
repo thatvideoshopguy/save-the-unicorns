@@ -36,6 +36,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 ADMINS = [("Developer Society", "studio@dev.ngo")]
 MANAGERS = ADMINS
 
+
 SERVER_EMAIL = os.environ.get("SERVER_EMAIL", f"{PROJECT_SLUG}@devemail.org")
 DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", f"{PROJECT_SLUG}@devemail.org")
 EMAIL_SUBJECT_PREFIX = f"[{PROJECT_SLUG}] "
@@ -45,7 +46,7 @@ sys.path.append(PROJECT_APPS_ROOT.as_posix())
 
 DEFAULT_APPS = [
     # These apps should come first to load correctly.
-    "core.apps.CoreConfig",
+    "apps.core.apps.CoreConfig",
     "django.contrib.admin.apps.AdminConfig",
     "django.contrib.auth.apps.AuthConfig",
     "django.contrib.contenttypes.apps.ContentTypesConfig",
@@ -55,17 +56,29 @@ DEFAULT_APPS = [
     "django.contrib.sites.apps.SitesConfig",
     "django.contrib.gis.apps.GISConfig",
 ]
-THIRD_PARTY_APPS = [
-    "axes",
-    "maskpostgresdata",
-    "watchman",
+
+THIRD_PARTY_APPS = ["axes", "maskpostgresdata", "watchman", "taggit"]
+
+WAGTAIL_APPS = [
+    "wagtail.contrib.forms",
+    "wagtail.contrib.redirects",
+    "wagtail.embeds",
+    "wagtail.sites",
+    "wagtail.users",
+    "wagtail.snippets",
+    "wagtail.documents",
+    "wagtail.images",
+    "wagtail.search",
+    "wagtail.admin",
+    "wagtail",
 ]
 
 PROJECT_APPS = [
-    "accounts.apps.AccountsConfig",
+    "apps.accounts.apps.AccountsConfig",
+    "apps.blog.apps.BlogConfig",
 ]
 
-INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + PROJECT_APPS
+INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + WAGTAIL_APPS + PROJECT_APPS
 
 MIDDLEWARE = [
     "django.contrib.sessions.middleware.SessionMiddleware",
@@ -77,6 +90,7 @@ MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sites.middleware.CurrentSiteMiddleware",
     "axes.middleware.AxesMiddleware",
+    "wagtail.contrib.redirects.middleware.RedirectMiddleware",
 ]
 
 ROOT_URLCONF = "project.urls"
@@ -254,3 +268,10 @@ SENTRY_ENVIRONMENT = os.environ.get("SENTRY_ENVIRONMENT")
 SENTRY_RELEASE = None
 
 AUTH_USER_MODEL = "accounts.User"
+
+# Wagtail
+# https://docs.wagtail.org/en/stable/reference/index.html
+
+WAGTAIL_SITE_NAME = os.environ.get("SITE_NAME")
+WAGTAILADMIN_BASE_URL = os.environ.get("BASE_URL")
+WAGTAILIMAGES_IMAGE_MODEL = "core.CustomImage"

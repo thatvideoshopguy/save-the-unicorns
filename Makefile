@@ -25,7 +25,7 @@ nuke: ## Full wipe of the local environment, uncommitted files, and database.
 nuke: venv-check venv-wipe git-full-clean database-drop
 
 reset: ## Reset your local environment. Useful after switching branches, etc.
-reset: venv-check venv-wipe install-local fab-get-backup django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites
+reset: venv-check venv-wipe install-local database-drop django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites
 
 full-reset: ## Reset your local environment and download all media files.
 full-reset: venv-check venv-wipe install-local fab-get-data django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites
@@ -81,8 +81,8 @@ git-full-clean:
 	git clean -ffdx
 
 database-drop:
-	dropdb --if-exists ${PROJECT_SLUG}_django
-
+	docker compose down -v --remove-orphans
+	docker compose up -d --build --wait
 
 # Installs
 install-local: npm-install pip-install-local

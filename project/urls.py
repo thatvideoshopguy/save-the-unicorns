@@ -7,25 +7,22 @@ from django.urls import include, path
 from django.views.decorators.cache import never_cache
 from django.views.generic import TemplateView
 from django.views.static import serve
-
-from apps import core
 from apps.core.views import server_error
-from apps.core import urls as core_urls
 
 admin.site.site_title = "Save The Unicorns"
 admin.site.site_header = "Save The Unicorns"
 
 handler500 = server_error
 
-# Standard Django site
 urlpatterns = [
-    path("admin/", admin.site.urls),
     path(
         "robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")
     ),
-    # Health checks
     path("_health/", include("watchman.urls")),
-    path("", include("apps.core.urls")),
+    path("admin/", include("wagtail.admin.urls")),
+    path("documents/", include("wagtail.documents.urls")),
+    # All pages route through Wagtail
+    path("", include("wagtail.urls")),
 ]
 
 # Make it easier to see a 404-page under debug

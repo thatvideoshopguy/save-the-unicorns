@@ -1,9 +1,7 @@
 import os
-
 from django.http import HttpResponseServerError
 from django.template import TemplateDoesNotExist, loader
 from django.views.decorators.csrf import requires_csrf_token
-
 from sentry_sdk import last_event_id
 
 ERROR_500_TEMPLATE_NAME = "500.html"

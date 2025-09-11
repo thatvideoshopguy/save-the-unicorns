@@ -1,1 +1,3 @@
-@use "landing";
+@forward "landing";
+@forward "blog_index";
+@forward "blog_page";
