@@ -6,6 +6,7 @@ const ESLintPlugin = require('eslint-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
+const sassEmbedded = require('sass-embedded');
 
 // Webpack clean dist
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -130,8 +131,12 @@ module.exports = [
                         {
                             loader: 'sass-loader',
                             options: {
+                                api: 'modern',
                                 sourceMap: true,
-                                implementation: require('sass-embedded'),
+                                implementation: sassEmbedded,
+                                sassOptions: {
+                                    loadPaths: ['node_modules'],
+                                },
                             },
                         },
                     ],
@@ -238,8 +243,12 @@ module.exports = [
                         {
                             loader: 'sass-loader',
                             options: {
+                                api: 'modern',
                                 sourceMap: true,
-                                implementation: require('sass-embedded'),
+                                implementation: sassEmbedded,
+                                sassOptions: {
+                                    loadPaths: ['node_modules'],
+                                },
                             },
                         },
                     ],

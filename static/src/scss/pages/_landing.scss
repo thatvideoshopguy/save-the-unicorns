@@ -1,0 +1,13 @@
+@use '../mixins/mixins' as *;
+@use '../variables' as *;
+
+.hero {
+    background-color: $color-background;
+}
+
+.about-image {
+    background: url(../img/about.png) left center/contain no-repeat;
+    min-width: 500px;
+    min-height: 500px;
+}
+

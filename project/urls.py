@@ -8,7 +8,9 @@ from django.views.decorators.cache import never_cache
 from django.views.generic import TemplateView
 from django.views.static import serve
 
-from core.views import server_error
+from apps import core
+from apps.core.views import server_error
+from apps.core import urls as core_urls
 
 admin.site.site_title = "Save The Unicorns"
 admin.site.site_header = "Save The Unicorns"
@@ -23,9 +25,10 @@ urlpatterns = [
     ),
     # Health checks
     path("_health/", include("watchman.urls")),
+    path("", include("apps.core.urls")),
 ]
 
-# Make it easier to see a 404 page under debug
+# Make it easier to see a 404-page under debug
 if settings.DEBUG:
     from django.views.defaults import page_not_found
 

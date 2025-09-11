@@ -3,14 +3,19 @@ $base-font-size: 1rem !default;
 $base-line-height: 1.5 !default;
 $base-font: 'Open Sans';
 
-// Colors
-$color-primary: #00e0ba !default;
-$color-secondary: #c5c5c5 !default;
+// Colours
+$color-primary: #E64398;
+$color-primary-light: #F172A1;
+$color-secondary: #A1C2D1;
+$color-accent: #FDD36B;
 
-$color-black: #000000 !default;
-$color-white: #ffffff !default;
-$color-grey: #a0a0a0 !default;
-$color-grey-light: #d3d3d3 !default;
+$color-black: #3E3E3E;
+$color-white: #ffffff;
+$color-grey: #a0a0a0;
+$color-grey-light: #d3d3d3;
+
+$color-background: rgba(240, 235, 244, 0.35);
+$color-title: #B29BC7;
 
 // Size
 $width-container: 60rem !default;
@@ -21,7 +26,6 @@ $breakpoint-mobile: 640px;
 $breakpoint-desktop: 960px;
 $breakpoint-desktop-large: 1280px;
 
-
-$menu-bg: #f5f5f5;
-$text-dark: #363636;
-$donate-yellow: #ffdd57;
+// Additional Typeface
+$family-tertiary: "Raleway", sans-serif;
+$family-tertiary-weight: 600;

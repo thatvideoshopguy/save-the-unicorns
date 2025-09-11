@@ -2,23 +2,22 @@
 @use '../mixins/mixins' as *;
 @use 'sass:color';
 
-.header{
-    background-color: $menu-bg;
+.header {
+    background-color: $color-background;
 }
 
 .navbar {
     &.is-top-menu {
-        font-family: var(--bulma-family-primary);
-        font-weight: var(--bulma-weight-bold);
 
         .navbar-item {
-            font-weight: var(--bulma-weight-bold);
+            font-family: $family-tertiary;
+            font-weight: $family-tertiary-weight;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-size: 0.95rem;
 
-            &.is-logo{
-                padding-right:0.5rem;
+            &.is-logo {
+                padding-right: 0.5rem;
             }
 
             &.is-tab {
@@ -47,6 +46,7 @@
         .navbar-end {
             margin-inline-start: 0;
             margin-inline-end: auto;
+
             .navbar-item {
                 &.has-donate-button {
                     padding: 0.5rem 0.75rem;
@@ -62,7 +62,7 @@
     .navbar {
         &.is-top-menu {
             .navbar-menu {
-                background-color: $menu-bg;
+                background-color: $color-background;
                 box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 
                 .navbar-item {

@@ -1,7 +1,10 @@
 @use '../variables' as *;
 
-.footer .container {
-    padding: 1.5rem;
+.footer {
+    background-color: #E64398;
+    &.container {
+        padding: 1.5rem;
+    }
 }
 
 .footer__legal {

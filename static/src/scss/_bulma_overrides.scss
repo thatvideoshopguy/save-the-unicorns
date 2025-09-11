@@ -2,10 +2,18 @@
 @use "variables" as *;
 
 @use "bulma/sass" with (
-  $family-primary: '"Raleway", sans-serif',
-  $weight-bold: 900,
+  $family-primary: '"Lato", sans-serif',
+  $family-secondary: '"Corben", sans-serif',
+  $weight-bold: 400,
   $navbar-background-color: transparent,
-  $navbar-item-color: $text-dark,
+  $navbar-item-color: $color-black,
   $navbar-height: 4rem,
-  $yellow: $donate-yellow
+  $footer-padding: 1.5rem,
+  $body-color: $color-black,
+  $title-family: '"Corben", sans-serif',
+  $title-weight: 700,
+  $title-size: 7rem,
+  $title-color: $color-title,
 );
+
+
