@@ -2,28 +2,21 @@
 {% load wagtailcore_tags wagtailimages_tags %}
 
 {% block main %}
-  <section class="section">
-    <div class="container">
+  <section class="section blog-header-section">
+    <div class="container is-max-desktop">
 
-      <div class="columns">
-        <div class="column is-8">
-          <div class="featured-image mb-6">
-            {% if page.featured_image %}
-              <figure>
-                {% image page.featured_image width-400 alt=page.featured_image.default_alt_text %}
-                {% if page.featured_image.caption %}
-                  <figcaption class="has-text-grey is-size-7 mt-2">
-                    {{ page.featured_image.description }}
-                  </figcaption>
-                {% endif %}
-              </figure>
-            {% else %}
-              {% include "blog/partials/placeholder_image.html" %}
-            {% endif %}
+      <div class="columns is-centered is-vcentered">
+        <div class="column">
+          <div class="image is-1by1">
+            {% image page.featured_image fill-1000x1000 as page_img %}
+            <img src="{{ page_img.url }}" alt="{{ page.featured_image.alt_text }}">
+          </div>
+          <div class="image-caption has-text-grey is-size-7 mt-2">
+            {{ page.featured_image.description }}
           </div>
         </div>
 
-        <div class="column is-4">
+        <div class="column">
           <div class="blog-date">
             {{ page.date|date:"d F Y"|upper }}
           </div>
@@ -33,23 +26,26 @@
           </h1>
         </div>
       </div>
+      <hr class="blog-separator"/>
 
-      <div class="columns">
-        <div class="column">
-          <article>
+    </div>
+  </section>
 
-            {% if page.intro %}
-              <div class="blog-intro">
-                {{ page.intro }}
-              </div>
-            {% endif %}
 
-            <div class="blog-content content">
-              {{ page.body|richtext }}
-            </div>
-          </article>
+
+  <section class="section blog-article-section">
+    <div class="container is-max-desktop">
+      {% if page.intro %}
+        <div class="blog-intro">
+          {{ page.intro }}
         </div>
+      {% endif %}
+
+      <div class="blog-content content">
+        {{ page.body|richtext }}
       </div>
     </div>
   </section>
+
+
 {% endblock %}
