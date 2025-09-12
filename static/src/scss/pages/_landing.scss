@@ -11,11 +11,21 @@
         mask-size: 6rem;
         height: 6rem;
         width: 6rem;
+        margin: 2rem auto 0; // Center horizontally and add top margin
+        animation: gentle-bounce 2s ease-in-out infinite;
     }
 
+    @keyframes gentle-bounce {
+        0%, 100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(0.75rem);
+        }
+    }
 }
 
-.about-section{
+.about-section {
     .about-image {
         background-image: url(../img/about.png);
         background-position-x: center;
@@ -26,17 +36,119 @@
         min-height: 500px;
     }
 
-    h1.title{
+    h2.title {
         color: $color-black;
-        font-size: 2rem;
+        font-size: 6rem;
     }
 
 }
 
-.blog-section{
+.blog-section {
     background-color: $color-secondary;
+
+    .title {
+        color: $color-primary-dark;
+        font-size: 4rem;
+    }
+
+    p {
+        color: $color-black;
+    }
+
+    .card {
+        filter: drop-shadow(8px 8px 0px $color-primary-dark);
+        transform: translateY(0);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); // Smooth easing
+        cursor: pointer; // Show it's clickable
+
+        &:hover {
+            filter: drop-shadow(15px 15px 0px $color-primary-dark);
+            transform: translateY(-8px); // Raises the card
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+
+            &:hover {
+                color: inherit; // Prevent color change on link hover
+            }
+        }
+
+        .title {
+            font-size: inherit;
+            font-family: $family-raleway;
+            color: $color-black;
+        }
+
+        figure {
+            margin: 0rem;
+        }
+    }
+
+    .card--1 {
+        margin-top: 1rem;
+
+        @media mobile {
+            margin-top: 0;
+        }
+    }
+
+    .card--2 {
+        margin-top: 6rem;
+
+        @media mobile {
+            margin-top: 0;
+        }
+    }
+
+    .card--3 {
+        margin-top: 15rem;
+
+        @media mobile {
+            margin-top: 0;
+        }
+    }
+
 }
 
-.sightings-section{
+.sightings-section {
     background-color: $color-primary;
+
+    .title {
+        font-size: 4rem;
+        color: $color-white;
+        margin-bottom: 0; // Remove bottom margin to align with text
+    }
+
+    p {
+        color: $color-white;
+        margin-bottom: 0; // Remove bottom margin
+    }
+
+    .sightings-link {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+            color: inherit;
+
+            .chevron-right {
+                transform: translateX(0.5rem);
+            }
+        }
+    }
+
+    .chevron-right {
+        background-color: $color-white;
+        mask: url(../sprite/chevron_right.svg);
+        mask-repeat: no-repeat;
+        mask-size: 6rem;
+        height: 6rem;
+        width: 6rem;
+        transition: transform 0.3s ease;
+    }
 }

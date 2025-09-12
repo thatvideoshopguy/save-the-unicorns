@@ -4,13 +4,13 @@
 
 .header-section {
     background-color: $color-background;
-    
+
     .navbar {
         &.is-top-menu {
 
             .navbar-item {
-                font-family: $family-tertiary;
-                font-weight: $family-tertiary-weight;
+                font-family: $family-raleway;
+                font-weight: $family-raleway-weight;
                 text-transform: uppercase;
                 letter-spacing: 0.5px;
                 font-size: 0.95rem;

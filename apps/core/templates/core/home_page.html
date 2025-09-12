@@ -20,12 +20,12 @@
   <section id="about" class="section is-large about-section">
     <div class="hero-body">
       <div class="container">
-        <div class="columns">
-          <div class="column">
+        <div class="columns is-vcentered">
+          <div class="column is-6">
             <div class="about-image"></div>
           </div>
-          <div class="column">
-            <h1 class="title">about</h1>
+          <div class="column is-4">
+            <h2 class="title">about</h2>
             <div class="content">{{ page.about_text|richtext }}</div>
           </div>
         </div>
@@ -33,124 +33,84 @@
     </div>
   </section>
 
-  <section id="blog" class="section is-large blog-section">
+  <section id="blog" class="section is-medium blog-section">
     <div class="container">
       <div class="columns">
         <div class="column">
           <h1 class="title">Latest News</h1>
           <p>Stay updated with our latest unicorn conservation efforts and sightings</p>
 
-          {% if latest_blogs %}
-            {% for blog in latest_blogs %}
-              <div class="card" style="margin-bottom: 1rem;">
-                <div class="card-image">
-                  <figure class="image is-4by3">
-                    {% if blog.featured_image %}
-                      {% image blog.featured_image fill-400x300 as blog_img %}
-                      <img src="{{ blog_img.url }}" alt="{{ blog.title }}"/>
-                    {% else %}
-                      <img
-                        src="https://bulma.io/assets/images/placeholders/1280x960.png"
-                        alt="Placeholder image"
-                      />
-                    {% endif %}
-                  </figure>
-                </div>
-                <div class="card-content">
-                  <h3 class="title is-5">
-                    <a href="{% pageurl blog %}">{{ blog.title }}</a>
-                  </h3>
-                  <p class="subtitle is-6">{{ blog.date|date:"F d, Y" }}</p>
-                  <p>{{ blog.intro }}</p>
-                </div>
-              </div>
-            {% endfor %}
-          {% else %}
-            <div class="card">
+          <div class="card card--1">
+            <a href="{% pageurl latest_blogs.0 %}">
               <div class="card-image">
                 <figure class="image is-4by3">
-                  <img
-                    src="https://bulma.io/assets/images/placeholders/1280x960.png"
-                    alt="Placeholder image"
-                  />
+                  {% image latest_blogs.0.featured_image fill-400x300 as blog_img %}
+                  <img src="{{ blog_img.url }}" alt="{{ latest_blogs.0.title }}"/>
                 </figure>
               </div>
               <div class="card-content">
-                <h3 class="title is-5">Sample Blog Post</h3>
-                <p class="subtitle is-6">Coming Soon</p>
-                <p>Blog posts will appear here once you create them in the Wagtail admin.</p>
+                <h3 class="title is-5">
+                  {{ latest_blogs.0.title }}
+                </h3>
               </div>
-            </div>
-          {% endif %}
+            </a>
+          </div>
+        </div>
 
-        </div>
         <div class="column">
-          {% if latest_blogs.1 %}
-            <div class="card">
+          <div class="card card--2">
+            <a href="{% pageurl latest_blogs.1 %}">
               <div class="card-image">
                 <figure class="image is-4by3">
-                  {% if latest_blogs.1.featured_image %}
-                    {% image latest_blogs.1.featured_image fill-400x300 as blog_img %}
-                    <img src="{{ blog_img.url }}" alt="{{ latest_blogs.1.title }}"/>
-                  {% else %}
-                    <img
-                      src="https://bulma.io/assets/images/placeholders/1280x960.png"
-                      alt="Placeholder image"
-                    />
-                  {% endif %}
+                  {% image latest_blogs.1.featured_image fill-400x300 as blog_img %}
+                  <img src="{{ blog_img.url }}" alt="{{ latest_blogs.1.title }}"/>
                 </figure>
               </div>
               <div class="card-content">
                 <h3 class="title is-5">
-                  <a href="{% pageurl latest_blogs.1 %}">{{ latest_blogs.1.title }}</a>
+                  {{ latest_blogs.1.title }}
                 </h3>
-                <p class="subtitle is-6">{{ latest_blogs.1.date|date:"F d, Y" }}</p>
-                <p>{{ latest_blogs.1.intro }}</p>
               </div>
-            </div>
-          {% endif %}
+            </a>
+          </div>
         </div>
+
         <div class="column">
-          {% if latest_blogs.2 %}
-            <div class="card">
+          <div class="card card--3">
+            <a href="{% pageurl latest_blogs.2 %}">
               <div class="card-image">
                 <figure class="image is-4by3">
-                  {% if latest_blogs.2.featured_image %}
-                    {% image latest_blogs.2.featured_image fill-400x300 as blog_img %}
-                    <img src="{{ blog_img.url }}" alt="{{ latest_blogs.2.title }}"/>
-                  {% else %}
-                    <img
-                      src="https://bulma.io/assets/images/placeholders/1280x960.png"
-                      alt="Placeholder image"
-                    />
-                  {% endif %}
+                  {% image latest_blogs.2.featured_image fill-400x300 as blog_img %}
+                  <img src="{{ blog_img.url }}" alt="{{ latest_blogs.2.title }}"/>
                 </figure>
               </div>
               <div class="card-content">
                 <h3 class="title is-5">
-                  <a href="{% pageurl latest_blogs.2 %}">{{ latest_blogs.2.title }}</a>
+                  {{ latest_blogs.2.title }}
                 </h3>
-                <p class="subtitle is-6">{{ latest_blogs.2.date|date:"F d, Y" }}</p>
-                <p>{{ latest_blogs.2.intro }}</p>
               </div>
-            </div>
-          {% endif %}
+            </a>
+          </div>
         </div>
+
       </div>
     </div>
   </section>
 
   <section class="section sightings-section">
     <div class="container">
-      <div class="columns">
-        <div class="column">
+      <div class="columns is-vcentered is-justify-content-space-between">
+        <div class="column is-4">
           <p>
             Explore the world's largest database of confirmed unicorn sightings dating back to the
             early 15th Century.
           </p>
         </div>
-        <div class="column">
-          <h1 class="title">sightings</h1>
+        <div class="column is-5">
+          <a href="/sightings" class="sightings-link">
+            <h2 class="title">sightings</h2>
+            <div class="chevron-right"></div>
+          </a>
         </div>
       </div>
     </div>
