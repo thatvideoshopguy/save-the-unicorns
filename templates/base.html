@@ -23,6 +23,8 @@
       <script src="{% static 'dist/js/sentry_config.js' %}"></script>
       <script src="{{ SENTRY_JS_URL }}" crossorigin="anonymous"></script>
     {% endif %}
+
+    <script src="https://unpkg.com/htmx.org@1.9.10" defer></script>
   </head>
   <body>
       {% include 'includes/header.html' %}
@@ -36,9 +38,9 @@
 
 
       {% include 'includes/footer.html' %}
+      {% include 'donations/donations_modal.html' %}
 
       <script src="{% static 'dist/js/app.js' %}"></script>
-      <script src="{% static 'dist/js/base.js' %}"></script>
       {% block extra_scripts %}
       {% endblock extra_scripts %}
   </body>
