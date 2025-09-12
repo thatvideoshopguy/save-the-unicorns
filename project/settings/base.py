@@ -77,6 +77,7 @@ PROJECT_APPS = [
     "apps.accounts.apps.AccountsConfig",
     "apps.blog.apps.BlogConfig",
     "apps.donations.apps.DonationsConfig",
+    "apps.sightings.apps.SightingsConfig"
 ]
 
 INSTALLED_APPS = DEFAULT_APPS + THIRD_PARTY_APPS + WAGTAIL_APPS + PROJECT_APPS

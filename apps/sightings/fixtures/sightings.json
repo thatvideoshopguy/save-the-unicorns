@@ -1,0 +1,106 @@
+[
+    {
+        "model": "sightings.location",
+        "pk": 1,
+        "fields": {
+            "name": "Big Ben",
+            "description": "Iconic clock tower in Westminster",
+            "point": "POINT(-0.124625 51.500729)",
+            "address": "Westminster, London SW1A 0AA, UK",
+            "website": "",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.location",
+        "pk": 2,
+        "fields": {
+            "name": "Edinburgh Castle",
+            "description": "Historic fortress dominating Edinburgh's skyline",
+            "point": "POINT(-3.199915 55.948612)",
+            "address": "Castlehill, Edinburgh EH1 2NG, Scotland",
+            "website": "https://www.edinburghcastle.scot",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.location",
+        "pk": 3,
+        "fields": {
+            "name": "Stonehenge",
+            "description": "Prehistoric monument in Wiltshire",
+            "point": "POINT(-1.826215 51.178882)",
+            "address": "Salisbury SP4 7DE, UK",
+            "website": "https://www.english-heritage.org.uk/visit/places/stonehenge",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.location",
+        "pk": 4,
+        "fields": {
+            "name": "Giant's Causeway",
+            "description": "Natural wonder of interlocking basalt columns",
+            "point": "POINT(-6.511649 55.241611)",
+            "address": "44 Causeway Rd, Bushmills BT57 8SU, Northern Ireland",
+            "website": "https://www.nationaltrust.org.uk/giants-causeway",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.location",
+        "pk": 5,
+        "fields": {
+            "name": "Snowdonia National Park",
+            "description": "Mountainous region in northwest Wales",
+            "point": "POINT(-3.952847 53.068320)",
+            "address": "Snowdonia National Park, Wales",
+            "website": "https://www.snowdonia.gov.wales",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.location",
+        "pk": 6,
+        "fields": {
+            "name": "Lake District",
+            "description": "Beautiful lakes and mountains in Cumbria",
+            "point": "POINT(-3.083333 54.455277)",
+            "address": "Lake District National Park, Cumbria, UK",
+            "website": "https://www.lakedistrict.gov.uk",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.location",
+        "pk": 7,
+        "fields": {
+            "name": "Tower Bridge",
+            "description": "Victorian bascule bridge crossing the River Thames",
+            "point": "POINT(-0.075356 51.505455)",
+            "address": "Tower Bridge Rd, London SE1 2UP, UK",
+            "website": "https://www.towerbridge.org.uk",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.location",
+        "pk": 8,
+        "fields": {
+            "name": "Bath Roman Baths",
+            "description": "Historic Roman bathing complex",
+            "point": "POINT(-2.359852 51.381051)",
+            "address": "Abbey Churchyard, Bath BA1 1LZ, UK",
+            "website": "https://www.romanbaths.co.uk",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    }
+]

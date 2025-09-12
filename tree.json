@@ -61,7 +61,6 @@
         ]},
         {"type":"directory","name":"migrations","contents":[
           {"type":"file","name":"0001_initial.py"},
-          {"type":"file","name":"0002_donation.py"},
           {"type":"file","name":"__init__.py"},
           {"type":"directory","name":"__pycache__"}
         ]},
@@ -88,9 +87,12 @@
         {"type":"file","name":"forms.py"},
         {"type":"file","name":"__init__.py"},
         {"type":"directory","name":"migrations","contents":[
-          {"type":"file","name":"__init__.py"}
+          {"type":"file","name":"0001_initial.py"},
+          {"type":"file","name":"__init__.py"},
+          {"type":"directory","name":"__pycache__"}
         ]},
         {"type":"file","name":"models.py"},
+        {"type":"directory","name":"__pycache__"},
         {"type":"directory","name":"templates","contents":[
           {"type":"directory","name":"donations"}
         ]},
@@ -98,7 +100,28 @@
         {"type":"file","name":"views.py"}
       ]},
       {"type":"file","name":"__init__.py"},
-      {"type":"directory","name":"__pycache__"}
+      {"type":"directory","name":"__pycache__"},
+      {"type":"directory","name":"sightings","contents":[
+        {"type":"file","name":"admin.py"},
+        {"type":"file","name":"apps.py"},
+        {"type":"directory","name":"fixtures","contents":[
+          {"type":"file","name":"sightings.json"}
+        ]},
+        {"type":"file","name":"__init__.py"},
+        {"type":"directory","name":"migrations","contents":[
+          {"type":"file","name":"0001_initial.py"},
+          {"type":"file","name":"__init__.py"},
+          {"type":"directory","name":"__pycache__"}
+        ]},
+        {"type":"file","name":"models.py"},
+        {"type":"directory","name":"__pycache__"},
+        {"type":"directory","name":"templates","contents":[
+          {"type":"directory","name":"sightings"}
+        ]},
+        {"type":"file","name":"tests.py"},
+        {"type":"file","name":"urls.py"},
+        {"type":"file","name":"views.py"}
+      ]}
     ]},
     {"type":"directory","name":"docker","contents":[
       {"type":"directory","name":"web","contents":[
@@ -211,5 +234,5 @@
     {"type":"file","name":"webpack.config.js"}
   ]}
 ,
-  {"type":"report","directories":62,"files":115}
+  {"type":"report","directories":71,"files":125}
 ]
