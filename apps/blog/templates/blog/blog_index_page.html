@@ -1,8 +1,8 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags wagtailimages_tags %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 
 {% block main %}
-  <section class="hero is-medium is-primary">
+  <section class="hero is-small hero-section">
     <div class="hero-body">
       <div class="container">
         <div class="columns is-centered">
@@ -17,20 +17,18 @@
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
+  <section class="section index-section">
+    <div class="container is-max-desktop">
       <div class="columns is-multiline is-centered">
         {% for blog in blogpages %}
           <div class="column is-6-tablet is-4-desktop">
             <div class="card">
-              {% if blog.featured_image %}
-                <div class="card-image">
-                  <figure class="image is-16by9">
-                    {% image blog.featured_image fill-400x225 as blog_img %}
-                    <img src="{{ blog_img.url }}" alt="{{ blog.title }}">
-                  </figure>
-                </div>
-              {% endif %}
+              <div class="card-image">
+                <figure class="image is-1by1 m-0">
+                  {% image blog.featured_image fill-600x600 as blog_img %}
+                  <img src="{{ blog_img.url }}" alt="{{ blog.featured_image.alt_text }}">
+                </figure>
+              </div>
 
               <div class="card-content">
                 <div class="content">
@@ -41,13 +39,13 @@
                     <a href="{{ blog.url }}" class="has-text-dark">{{ blog.title }}</a>
                   </h2>
                   {% if blog.intro %}
-                    <p class="has-text-grey">{{ blog.intro|truncatewords:20 }}</p>
+                    <p class="has-text-grey">{{ blog.intro }}</p>
                   {% endif %}
                 </div>
               </div>
 
               <footer class="card-footer">
-                <a href="{{ blog.url }}" class="card-footer-item has-text-primary">
+                <a href="{{ blog.url }}" class="card-footer-item">
                   Read More
                 </a>
               </footer>

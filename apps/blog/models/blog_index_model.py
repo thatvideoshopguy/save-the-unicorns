@@ -12,6 +12,6 @@ class BlogIndexPage(Page):
 
     def get_context(self, request):
         context = super().get_context(request)
-        blogpages = self.get_children().live().order_by("-first_published_at")
+        blogpages = self.get_children().live().order_by("-first_published_at").specific()
         context["blogpages"] = blogpages
         return context

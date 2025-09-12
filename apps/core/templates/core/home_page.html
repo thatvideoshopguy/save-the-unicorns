@@ -17,7 +17,7 @@
     </div>
   </section>
 
-  <section id="about" class="section is-large about-section">
+  <section id="about" class="section is-medium about-section">
     <div class="hero-body">
       <div class="container">
         <div class="columns is-vcentered">
@@ -45,7 +45,7 @@
               <div class="card-image">
                 <figure class="image is-4by3">
                   {% image latest_blogs.0.featured_image fill-400x300 as blog_img %}
-                  <img src="{{ blog_img.url }}" alt="{{ latest_blogs.0.title }}"/>
+                  <img src="{{ blog_img.url }}" alt="{{ latest_blogs.0.featured_image.alt_text }}"/>
                 </figure>
               </div>
               <div class="card-content">
@@ -63,7 +63,7 @@
               <div class="card-image">
                 <figure class="image is-4by3">
                   {% image latest_blogs.1.featured_image fill-400x300 as blog_img %}
-                  <img src="{{ blog_img.url }}" alt="{{ latest_blogs.1.title }}"/>
+                  <img src="{{ blog_img.url }}" alt="{{ latest_blogs.1.featured_image.alt_text }}"/>
                 </figure>
               </div>
               <div class="card-content">
@@ -81,7 +81,7 @@
               <div class="card-image">
                 <figure class="image is-4by3">
                   {% image latest_blogs.2.featured_image fill-400x300 as blog_img %}
-                  <img src="{{ blog_img.url }}" alt="{{ latest_blogs.2.title }}"/>
+                  <img src="{{ blog_img.url }}" alt="{{ latest_blogs.2.featured_image.alt_text }}"/>
                 </figure>
               </div>
               <div class="card-content">
