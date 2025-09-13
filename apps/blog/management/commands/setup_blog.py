@@ -1,15 +1,13 @@
 import os
+import tempfile
+from datetime import date, datetime
 import frontmatter
 import markdown
-from datetime import date, datetime
-from django.core.management.base import BaseCommand
-from django.core.files.images import ImageFile
-from wagtail.models import Page
-from wagtail.images.models import Image
-from apps.blog.models import BlogIndexPage, BlogPage
-from apps.core.models import HomePage
 from PIL import Image as PILImage
-import tempfile
+from django.core.files.images import ImageFile
+from django.core.management.base import BaseCommand
+from wagtail.models import Page
+from apps.blog.models import BlogIndexPage, BlogPage
 from apps.core.management import WagtailSetupUtils
 from apps.core.models import CustomImage
 
@@ -50,7 +48,7 @@ class Command(BaseCommand):
             )
             return
 
-        parent_page = self._get_parent_page(utils)
+        parent_page = utils.get_parent_page
         if not parent_page:
             return
 
@@ -74,25 +72,7 @@ class Command(BaseCommand):
         utils.styled_output(f"Blog available at: /blog/")
         utils.styled_output(f"Admin available at: /admin/")
 
-    @staticmethod
-    def _get_parent_page(utils: WagtailSetupUtils) -> Page | None:
-        """Get the parent page for the blog (homepage or root)"""
-        try:
-            homepage = HomePage.objects.live().first()
-            if homepage:
-                utils.styled_output(f"Using homepage as parent: {homepage.title}")
-                return homepage
-        except ImportError:
-            pass
 
-        # Fallback to root page
-        root_page = Page.get_first_root_node()
-        if not root_page:
-            utils.styled_output("No root page found", "ERROR")
-            return None
-
-        utils.styled_output(f"Using root page as parent: {root_page.title}")
-        return root_page
 
     @staticmethod
     def _create_blog_index(utils: WagtailSetupUtils, parent_page: Page) -> Page | None:
@@ -110,13 +90,6 @@ class Command(BaseCommand):
             return blog_index
         except Exception as e:
             utils.styled_output(f"Failed to create blog index: {e}", "ERROR")
-            # List existing children to help debug
-            children = parent_page.get_children()
-            utils.styled_output("Existing child pages:")
-            for child in children:
-                utils.styled_output(
-                    f"  - {child.title} (slug: {child.slug}, type: {type(child).__name__})"
-                )
             return None
 
     def _import_markdown_files(

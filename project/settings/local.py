@@ -42,9 +42,11 @@ if not os.environ.get("DISABLE_TOOLBAR") and "test" not in sys.argv:
     DEBUG_TOOLBAR_CONFIG = {
         "SKIP_TEMPLATE_PREFIXES": ("django/forms/widgets/", "admin/widgets/", "bootstrap/"),
         "RESULTS_CACHE_SIZE": 200,
-        # Ignore callback for HTMX requests
+        # Ignore callback for HTMX requests and Wagtail Admin
         "SHOW_TOOLBAR_CALLBACK": lambda request: (
-            False if request.headers.get('HX-Request') else True
+            False
+            if (request.headers.get("HX-Request") or request.path.startswith("/admin/"))
+            else True
         ),
     }
 

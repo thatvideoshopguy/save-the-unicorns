@@ -1,3 +1,10 @@
 @forward "landing";
 @forward "blog_index";
 @forward "blog_page";
+@forward "sightings";
+
+@use '../variables' as *;
+
+.title-section {
+    background-color: $color-background;
+}

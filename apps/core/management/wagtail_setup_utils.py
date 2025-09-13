@@ -3,6 +3,7 @@ from wagtail.models import Page, Site
 from typing import Type
 from django.db import models, DatabaseError, ProgrammingError
 from django.core.exceptions import ImproperlyConfigured
+from apps.core.models import HomePage
 
 
 class WagtailSetupUtils:
@@ -182,3 +183,22 @@ class WagtailSetupUtils:
                 self.styled_output(f"Alternative method also failed: {e}", "ERROR")
                 self.debug_page_tree()
                 raise
+
+    def get_parent_page(self) -> Page | None:
+        """Get the parent page for the blog (homepage or root)"""
+        try:
+            homepage = HomePage.objects.live().first()
+            if homepage:
+                self.styled_output(f"Using homepage as parent: {homepage.title}")
+                return homepage
+        except ImportError:
+            pass
+
+        # Fallback to root page
+        root_page = Page.get_first_root_node()
+        if not root_page:
+            self.styled_output("No root page found", "ERROR")
+            return None
+
+        self.styled_output(f"Using root page as parent: {root_page.title}")
+        return root_page

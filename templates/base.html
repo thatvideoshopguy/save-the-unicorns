@@ -25,6 +25,8 @@
     {% endif %}
 
     <script src="https://unpkg.com/htmx.org@1.9.10" defer></script>
+    {% block extra_css %}
+    {% endblock extra_css %}
   </head>
   <body>
       {% include 'includes/header.html' %}
@@ -41,7 +43,7 @@
       {% include 'donations/donations_modal.html' %}
 
       <script src="{% static 'dist/js/app.js' %}"></script>
-      {% block extra_scripts %}
-      {% endblock extra_scripts %}
+      {% block extra_js %}
+      {% endblock extra_js %}
   </body>
 </html>

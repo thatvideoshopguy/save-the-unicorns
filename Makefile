@@ -25,7 +25,7 @@ nuke: ## Full wipe of the local environment, uncommitted files, and database.
 nuke: venv-check venv-wipe git-full-clean database-drop
 
 reset: ## Reset your local environment. Useful after switching branches, etc.
-reset: venv-check venv-wipe install-local database-drop django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites
+reset: venv-check venv-wipe install-local database-drop django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites django-setup-homepage django-setup-blog django-setup-sightings
 
 full-reset: ## Reset your local environment and download all media files.
 full-reset: venv-check venv-wipe install-local fab-get-data django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites
@@ -161,6 +161,14 @@ django-migrate:
 django-configure-local-sites:
 	./manage.py configure_local_sites
 
+django-setup-homepage:
+	./manage.py setup_homepage
+
+django-setup-blog:
+	./manage.py setup_blog
+
+django-setup-sightings:
+	./manage.py setup_sightings
 
 # NPM
 npm-check: npm-install npm-run-production

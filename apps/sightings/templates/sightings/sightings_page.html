@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block extra_css %}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+{% endblock %}
+
+{% block main %}
+  <section class="hero is-small title-section">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8 has-text-centered">
+            <h1 class="title is-1">{{ page.title }}</h1>
+            {% if page.intro %}
+              <p class="subtitle is-4">{{ page.intro|richtext }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <div class="box">
+            <div id="map" class="map-container"></div>
+          </div>
+          <div class="box-caption has-text-grey has-text-right">
+            Click on the markers to learn more about each sighting.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}
+
+{% block extra_js %}
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+          integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+          crossorigin=""></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // Initialize the map with Django template data
+      new SightingsMap({
+        mapElement: 'map',
+        centerLat: {{ map_center_lat }},
+        centerLng: {{ map_center_lng }},
+        zoomLevel: {{ page.zoom_level }},
+        locations: {{ locations_json }}
+      });
+    });
+  </script>
+{% endblock %}

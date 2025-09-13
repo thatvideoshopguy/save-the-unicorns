@@ -1,0 +1,29 @@
+<div class="popup-content" style="max-width: 280px;">
+  <h6 class="title is-6 mb-2 has-text-primary">{{ sighting.location_name }}</h6>
+
+  {% if sighting.description %}
+    <div class="content is-small mb-3">
+      <p>{{ sighting.description }}</p>
+    </div>
+  {% endif %}
+
+  <div class="field">
+    <div class="control">
+      <div class="tags has-addons">
+        <span class="tag is-light">Witnessed by</span>
+        <span class="tag is-info">{{ sighting.sighted_by }}</span>
+      </div>
+    </div>
+  </div>
+
+  {% if sighting.sighted_at %}
+    <div class="field">
+      <div class="control">
+        <div class="tags has-addons">
+          <span class="tag is-light">Date</span>
+          <span class="tag is-success is-light">{{ sighting.sighted_at|date:"M d, Y" }}</span>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</div>
