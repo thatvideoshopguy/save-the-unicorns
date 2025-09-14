@@ -25,16 +25,13 @@ nuke: ## Full wipe of the local environment, uncommitted files, and database.
 nuke: venv-check venv-wipe git-full-clean database-drop
 
 reset: ## Reset your local environment. Useful after switching branches, etc.
-reset: venv-check venv-wipe install-local database-drop django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites django-setup-homepage django-setup-blog django-setup-sightings
+reset: venv-check venv-wipe install-local database-drop django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites
 
 full-reset: ## Reset your local environment and download all media files.
-full-reset: venv-check venv-wipe install-local fab-get-data django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites
+full-reset: venv-check venv-wipe install-local django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites
 
 clear: ## Like reset but without the wiping of the installs.
-clear: fab-get-backup django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites
-
-full-clear: ## Fresh download of remotely stored data including media files.
-full-clear: fab-get-data django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites
+clear: django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites
 
 check: ## Check for any obvious errors in the project's setup.
 check: pipdeptree-check npm-check django-check
@@ -53,9 +50,6 @@ test-fast: django-test-fast
 
 test-report: ## Run and report on unit and integration tests.
 test-report: coverage-clean test coverage-report
-
-deploy: ## Deploy this project to demo or live.
-deploy: fab-deploy
 
 # ---------------
 # Utility targets
@@ -91,19 +85,6 @@ install-local: npm-install pip-install-local
 # Pip
 pip-install-local: venv-check
 	pip install -r requirements/local.txt
-
-
-# Fabfile
-fab-get-data: fab-get-backup fab-get-media
-
-fab-get-backup:
-	fab $${site:-live} get_backup
-
-fab-get-media:
-	fab $${site:-live} get_media
-
-fab-deploy:
-	fab $${site:-live} deploy
 
 
 # Coverage
@@ -161,14 +142,6 @@ django-migrate:
 django-configure-local-sites:
 	./manage.py configure_local_sites
 
-django-setup-homepage:
-	./manage.py setup_homepage
-
-django-setup-blog:
-	./manage.py setup_blog
-
-django-setup-sightings:
-	./manage.py setup_sightings
 
 # NPM
 npm-check: npm-install npm-run-production
