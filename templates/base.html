@@ -10,7 +10,7 @@
         {{ request.site.name }}
       {% endblock title %}
     </title>
-    <link rel="stylesheet" href="{% webpack_static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="{% webpack_static 'styles.css' %}" />
     <link rel="canonical" href="{{ request.build_absolute_uri }}" />
     {% include 'includes/fonts.html' %}
     {% include 'includes/meta.html' %}
@@ -38,7 +38,7 @@
     </main>
     {% include 'includes/footer.html' %}
     {% include 'donations/donations_modal.html' %}
-    <script src="{% webpack_static 'js/app.js' %}"></script>
+    <script src="{% webpack_static 'app.js' %}"></script>
     {% block extra_js %}
     {% endblock extra_js %}
   </body>

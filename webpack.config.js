@@ -46,7 +46,7 @@ const config = {
         }),
         manifest: new WebpackManifestPlugin({
             fileName: 'manifest.json',
-            publicPath: '/static/dist/',
+            publicPath: '/dist/',
         }),
     },
 };

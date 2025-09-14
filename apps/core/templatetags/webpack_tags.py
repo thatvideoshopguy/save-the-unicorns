@@ -24,9 +24,7 @@ def webpack_static(asset_name):
         # Get the hashed filename from manifest
         hashed_filename = manifest.get(asset_name, asset_name)
 
-        # Return the static URL
-        return staticfiles_storage.url(f"dist/{hashed_filename}")
+        return staticfiles_storage.url(hashed_filename)
 
     except (FileNotFoundError, json.JSONDecodeError):
-        # Fallback to original filename (useful in development)
-        return staticfiles_storage.url(f"dist/{asset_name}")
+        return staticfiles_storage.url(asset_name)

@@ -2,14 +2,11 @@
 @use 'variables' as *;
 
 // Base utilities and variables (required)
-@use 'bulma/sass/utilities' with (
-    $family-primary: $family-lato,
-    $weight-normal: $family-lato-normal,
-    $weight-bold: $family-lato-bold
-);
+@use 'bulma/sass/utilities';
 
 // Base styles (required)
 @use 'bulma/sass/base' with (
+    $body-family: $family-lato,
     $body-color: $color-black,
     $body-weight: 400
 );
@@ -60,3 +57,6 @@
 @use 'bulma/sass/helpers/spacing';
 @use 'bulma/sass/helpers/typography';
 @use 'bulma/sass/helpers/visibility';
+
+// THEMES
+@use 'bulma/sass/themes';
