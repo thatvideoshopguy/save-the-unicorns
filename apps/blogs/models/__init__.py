@@ -1,2 +1,2 @@
-from .blog_index_model import BlogIndexPage as BlogIndexPage
-from .blog_page_model import BlogPage as BlogPage
+from .blog_index_page import BlogIndexPage as BlogIndexPage
+from .blog_detail_page import BlogDetailPage as BlogDetailPage

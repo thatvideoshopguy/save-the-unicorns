@@ -2,7 +2,7 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.fields import RichTextField
 from wagtail.models import Page
 
-from apps.blog.models import BlogIndexPage
+from apps.blogs.models import BlogIndexPage
 
 
 class HomePage(Page):

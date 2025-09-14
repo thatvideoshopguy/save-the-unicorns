@@ -13,7 +13,7 @@ import markdown
 from PIL import Image as PILImage
 from wagtail.models import Page
 
-from apps.blog.models import BlogIndexPage, BlogPage
+from apps.blogs.models import BlogIndexPage, BlogDetailPage
 from apps.core.utils import WagtailSetupUtils
 from apps.core.models import CustomImage
 
@@ -25,19 +25,19 @@ class Command(BaseCommand):
         parser.add_argument(
             "--content-file",
             type=str,
-            default="apps/blog/content/blog_index.yaml",
+            default="apps/blogs/content/blog_index_content.yaml",
             help="The file containing the blog index content",
         )
         parser.add_argument(
             "--content-dir",
             type=str,
-            default="apps/blog/content/posts",
+            default="apps/blogs/content/posts",
             help="Directory containing markdown files",
         )
         parser.add_argument(
             "--images-dir",
             type=str,
-            default="apps/blog/content/images",
+            default="apps/blogs/content/images",
             help="Directory containing images",
         )
         parser.add_argument(
@@ -53,7 +53,7 @@ class Command(BaseCommand):
         force = options["force"]
         utils = WagtailSetupUtils(self)
 
-        if not utils.check_model_tables_exist([BlogPage, BlogIndexPage]):
+        if not utils.check_model_tables_exist([BlogDetailPage, BlogIndexPage]):
             utils.styled_output(
                 "Blog tables don't exist. Please run 'python manage.py makemigrations blog' "
                 "and 'python manage.py migrate' first.",
@@ -66,7 +66,7 @@ class Command(BaseCommand):
             return
 
         utils.styled_output("Cleaning up existing blog content...")
-        utils.cleanup_pages_by_type([BlogPage, BlogIndexPage])
+        utils.cleanup_pages_by_type([BlogDetailPage, BlogIndexPage])
 
         if not utils.check_slug_availability(parent_page, "blog", force):
             return
@@ -77,7 +77,7 @@ class Command(BaseCommand):
 
         self._import_markdown_files(utils, blog_index, content_dir, images_dir)
 
-        utils.styled_output(f"Successfully imported {BlogPage.objects.count()} blog posts")
+        utils.styled_output(f"Successfully imported {BlogDetailPage.objects.count()} blog posts")
         utils.styled_output("Blog available at: /blog/")
         utils.styled_output("Admin available at: /admin/")
 
@@ -159,7 +159,7 @@ class Command(BaseCommand):
                     featured_image_caption,
                 )
 
-            blog_post = BlogPage(
+            blog_post = BlogDetailPage(
                 title=title,
                 slug=slug,
                 date=date_obj,
@@ -259,7 +259,6 @@ class Command(BaseCommand):
     def _compress_image(utils: WagtailSetupUtils, image_path: Path) -> Path | None:
         """Compress an image using Pillow"""
         try:
-            # Open the image
             with PILImage.open(image_path) as original_img:
                 # Convert to RGB if necessary (for JPEG)
                 processed_img = original_img
@@ -275,7 +274,6 @@ class Command(BaseCommand):
                         (max_width, new_height), PILImage.Resampling.LANCZOS
                     )
 
-                # Create temporary file
                 temp_fd, temp_path = tempfile.mkstemp(suffix=".png")
                 os.close(temp_fd)
 

@@ -1,3 +1,5 @@
+import json
+
 from django.contrib.gis.db import models
 from django.contrib.gis.geos import Point
 from django.template.loader import render_to_string
@@ -10,6 +12,8 @@ from apps.sightings.models.sighting_model import SightingModel
 
 
 class SightingPage(Page):
+    template = "sightings/sighting_index.html"
+
     intro = RichTextField(blank=True)
     map_center = models.PointField(
         srid=4326, default=Point(-4.0, 54.5, srid=4326), help_text="Map center point"
@@ -25,7 +29,7 @@ class SightingPage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        sightings = SightingModel.objects.exclude(point__isnull=True)
+        sightings = SightingModel.objects.exclude(location_point__isnull=True)
 
         sightings_data = []
         for sighting in sightings:
@@ -48,7 +52,7 @@ class SightingPage(Page):
                 }
             )
 
-        context["sightings"] = sightings
+        context["sightings_json"] = json.dumps(sightings_data)
         context["map_center_lat"] = float(self.map_center.y) if self.map_center else 54.5
         context["map_center_lng"] = float(self.map_center.x) if self.map_center else -4.0
 

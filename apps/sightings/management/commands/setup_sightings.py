@@ -17,7 +17,7 @@ class Command(BaseCommand):
         parser.add_argument(
             "--content-file",
             type=str,
-            default="apps/blog/content/sighting_page.yaml",
+            default="apps/sightings/content/sightings_page_content.yaml",
             help="The file containing the sighting index content",
         )
         parser.add_argument(

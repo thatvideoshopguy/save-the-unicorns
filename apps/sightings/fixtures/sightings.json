@@ -1,6 +1,6 @@
 [
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 1,
         "fields": {
             "location_name": "Sherwood Forest, Nottinghamshire",
@@ -13,7 +13,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 2,
         "fields": {
             "location_name": "Glen Coe, Scottish Highlands",
@@ -26,7 +26,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 3,
         "fields": {
             "location_name": "Dartmoor, Devon",
@@ -39,7 +39,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 4,
         "fields": {
             "location_name": "Lake Windermere, Lake District",
@@ -52,7 +52,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 5,
         "fields": {
             "location_name": "Snowdon, Wales",
@@ -65,7 +65,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 6,
         "fields": {
             "location_name": "Canterbury Cathedral Grounds, Kent",
@@ -78,7 +78,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 7,
         "fields": {
             "location_name": "Isle of Skye, Scotland",
@@ -91,7 +91,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 8,
         "fields": {
             "location_name": "Stonehenge, Wiltshire",
@@ -104,7 +104,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 9,
         "fields": {
             "location_name": "Windsor Great Park, Berkshire",
@@ -117,7 +117,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 10,
         "fields": {
             "location_name": "Giant's Causeway, Northern Ireland",
@@ -130,7 +130,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 11,
         "fields": {
             "location_name": "Exmoor National Park, Somerset",
@@ -143,7 +143,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 12,
         "fields": {
             "location_name": "York Minster, North Yorkshire",
@@ -156,7 +156,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 13,
         "fields": {
             "location_name": "Loch Ness, Scottish Highlands",
@@ -169,7 +169,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 14,
         "fields": {
             "location_name": "Tintagel Castle, Cornwall",
@@ -182,7 +182,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 15,
         "fields": {
             "location_name": "Peak District, Derbyshire",
@@ -195,7 +195,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 16,
         "fields": {
             "location_name": "Hadrian's Wall, Northumberland",
@@ -208,7 +208,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 17,
         "fields": {
             "location_name": "Richmond Park, London",
@@ -221,7 +221,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 18,
         "fields": {
             "location_name": "Brecon Beacons, Wales",
@@ -234,7 +234,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 19,
         "fields": {
             "location_name": "Bath Abbey, Somerset",
@@ -247,7 +247,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 20,
         "fields": {
             "location_name": "Cairngorms National Park, Scotland",
@@ -260,7 +260,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 21,
         "fields": {
             "location_name": "Forest of Dean, Gloucestershire",
@@ -273,7 +273,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 22,
         "fields": {
             "location_name": "Durham Cathedral, County Durham",
@@ -286,7 +286,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 23,
         "fields": {
             "location_name": "Ashdown Forest, East Sussex",
@@ -299,7 +299,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 24,
         "fields": {
             "location_name": "Warwick Castle, Warwickshire",
@@ -312,7 +312,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 25,
         "fields": {
             "location_name": "Wicklow Mountains, Ireland",
@@ -325,7 +325,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 26,
         "fields": {
             "location_name": "Salisbury Cathedral, Wiltshire",
@@ -338,7 +338,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 27,
         "fields": {
             "location_name": "Fountains Abbey, North Yorkshire",
@@ -351,7 +351,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 28,
         "fields": {
             "location_name": "Ben Nevis, Scottish Highlands",
@@ -364,7 +364,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 29,
         "fields": {
             "location_name": "Chatsworth House Gardens, Derbyshire",
@@ -377,7 +377,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 30,
         "fields": {
             "location_name": "Glastonbury Tor, Somerset",
@@ -390,7 +390,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 31,
         "fields": {
             "location_name": "Pembrokeshire Coast, Wales",
@@ -403,7 +403,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 32,
         "fields": {
             "location_name": "Edinburgh Castle, Scotland",
@@ -416,7 +416,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 33,
         "fields": {
             "location_name": "Kenilworth Castle, Warwickshire",
@@ -429,7 +429,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 34,
         "fields": {
             "location_name": "Rievaulx Abbey, North Yorkshire",
@@ -442,7 +442,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 35,
         "fields": {
             "location_name": "Cliffs of Dover, Kent",
@@ -455,7 +455,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 36,
         "fields": {
             "location_name": "Hyde Park, London",
@@ -468,7 +468,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 37,
         "fields": {
             "location_name": "Stirling Castle, Scotland",
@@ -481,7 +481,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 38,
         "fields": {
             "location_name": "Stratford-upon-Avon, Warwickshire",
@@ -494,7 +494,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 39,
         "fields": {
             "location_name": "Anglesey, Wales",
@@ -507,7 +507,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 40,
         "fields": {
             "location_name": "Hampton Court Palace, Surrey",
@@ -520,7 +520,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 41,
         "fields": {
             "location_name": "Greenwich Observatory, London",
@@ -533,7 +533,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 42,
         "fields": {
             "location_name": "Bodmin Moor, Cornwall",
@@ -546,7 +546,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 43,
         "fields": {
             "location_name": "Kew Gardens, London",
@@ -559,7 +559,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 44,
         "fields": {
             "location_name": "Avebury Stone Circle, Wiltshire",
@@ -572,7 +572,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 45,
         "fields": {
             "location_name": "Tower Bridge, London",
@@ -585,7 +585,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 46,
         "fields": {
             "location_name": "Chester Cathedral, Cheshire",
@@ -598,7 +598,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 47,
         "fields": {
             "location_name": "Regent's Park, London",
@@ -611,7 +611,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 48,
         "fields": {
             "location_name": "Holyrood Palace, Edinburgh",
@@ -624,7 +624,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 49,
         "fields": {
             "location_name": "Liverpool Docks, Merseyside",
@@ -637,7 +637,7 @@
         }
     },
     {
-        "model": "sightings.sighting",
+        "model": "sightings.sightingmodel",
         "pk": 50,
         "fields": {
             "location_name": "Millennium Bridge, London",

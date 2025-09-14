@@ -5,7 +5,9 @@ from wagtail.fields import RichTextField
 from wagtail.models import Page
 
 
-class BlogPage(Page):
+class BlogDetailPage(Page):
+    template = 'blogs/blog_detail.html'
+
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)
     body = RichTextField(blank=True)

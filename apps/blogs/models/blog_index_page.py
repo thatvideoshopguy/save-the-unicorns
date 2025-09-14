@@ -2,10 +2,12 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.fields import RichTextField
 from wagtail.models import Page
 
-from apps.blog.models.blog_page_model import BlogPage
+from apps.blogs.models.blog_detail_page import BlogDetailPage
 
 
 class BlogIndexPage(Page):
+    template = 'blogs/blog_index.html'
+
     intro = RichTextField(blank=True)
 
     content_panels = [
@@ -20,4 +22,4 @@ class BlogIndexPage(Page):
         return context
 
     def get_latest_blogs(self, limit=3):
-        return BlogPage.objects.child_of(self).live().order_by("-first_published_at")[:limit]
+        return BlogDetailPage.objects.child_of(self).live().order_by("-first_published_at")[:limit]

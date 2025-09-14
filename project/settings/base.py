@@ -75,7 +75,7 @@ WAGTAIL_APPS = [
 
 PROJECT_APPS = [
     "apps.accounts.apps.AccountsConfig",
-    "apps.blog.apps.BlogConfig",
+    "apps.blogs.apps.BlogConfig",
     "apps.donations.apps.DonationsConfig",
     "apps.sightings.apps.SightingsConfig",
 ]
@@ -179,8 +179,8 @@ TEMPLATES = [
                 "django.template.context_processors.tz",
                 "django.template.context_processors.request",
                 "django.contrib.messages.context_processors.messages",
-                "core.context_processors.demo",
-                "core.context_processors.sentry_config",
+                "apps.core.context_processors.demo",
+                "apps.core.context_processors.sentry_config",
             ]
         },
     }

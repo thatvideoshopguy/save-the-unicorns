@@ -53,7 +53,7 @@
         centerLat: {{ map_center_lat }},
         centerLng: {{ map_center_lng }},
         zoomLevel: {{ page.zoom_level }},
-        locations: {{ locations_json }}
+        sightings: {{ sightings_json|safe }}
       });
     });
   </script>

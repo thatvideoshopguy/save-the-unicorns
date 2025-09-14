@@ -37,9 +37,7 @@ class Migration(migrations.Migration):
                 ),
                 (
                     "about_text",
-                    wagtail.fields.RichTextField(
-                        default="Since the Middle Ages, our organisation has been keep a watchful eye over theses majestic creatures..."
-                    ),
+                    wagtail.fields.RichTextField(),
                 ),
             ],
             options={
