@@ -14,7 +14,7 @@ from PIL import Image as PILImage
 from wagtail.models import Page
 
 from apps.blog.models import BlogIndexPage, BlogPage
-from apps.core.management import WagtailSetupUtils
+from apps.core.utils import WagtailSetupUtils
 from apps.core.models import CustomImage
 
 
@@ -49,7 +49,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         content_file = Path(options["content_file"])
         content_dir = Path(options["content_dir"])
-        images_dir = options["images_dir"]
+        images_dir = Path(options["images_dir"])
         force = options["force"]
         utils = WagtailSetupUtils(self)
 
@@ -103,11 +103,11 @@ class Command(BaseCommand):
         self, utils: WagtailSetupUtils, blog_index: Page, content_dir: Path, images_dir: Path
     ) -> None:
         """Import markdown files as blog posts"""
-        if not Path.exists(content_dir):
+        if not content_dir.exists():
             utils.styled_output(f"Content directory not found: {content_dir}", "WARNING")
             return
 
-        markdown_files = [f.name for f in Path(content_dir).iterdir() if f.suffix == ".md"]
+        markdown_files = [f.name for f in content_dir.iterdir() if f.suffix == ".md"]
 
         if not markdown_files:
             utils.styled_output(f"No markdown files found in {content_dir}", "WARNING")
@@ -116,7 +116,7 @@ class Command(BaseCommand):
         utils.styled_output(f"Found {len(markdown_files)} markdown files")
 
         for filename in markdown_files:
-            file_path = Path(content_dir) / filename
+            file_path = content_dir / filename
             self._import_single_post(utils, blog_index, file_path, filename, images_dir)
 
     def _import_single_post(
@@ -129,7 +129,6 @@ class Command(BaseCommand):
     ) -> None:
         """Import a single markdown file as a blog post"""
         try:
-            # Parse the markdown file with frontmatter
             with file_path.open(encoding="utf-8") as f:
                 post = frontmatter.load(f)
 
@@ -151,7 +150,7 @@ class Command(BaseCommand):
             body_html = md.convert(post.content)
 
             featured_image = None
-            if featured_image_name and Path.exists(images_dir):
+            if featured_image_name and images_dir.exists():
                 featured_image = self._import_image(
                     utils,
                     featured_image_name,
@@ -160,7 +159,6 @@ class Command(BaseCommand):
                     featured_image_caption,
                 )
 
-            # Create blog post
             blog_post = BlogPage(
                 title=title,
                 slug=slug,
@@ -170,10 +168,8 @@ class Command(BaseCommand):
                 featured_image=featured_image,
             )
 
-            # Create and publish the post
             utils.create_and_publish_page(blog_index, blog_post)
-            utils.styled_output(f"  - Imported: {title}")
-            utils.styled_output(f"Debug - Alt text for {filename}: '{featured_image_alt}'")
+            utils.styled_output(f"\t- Imported: {title}")
 
         except (OSError, UnicodeDecodeError) as e:
             utils.styled_output(f"Failed to read file {filename}: {e}", "ERROR")
@@ -217,13 +213,13 @@ class Command(BaseCommand):
             # Check if image already exists
             existing_image = CustomImage.objects.filter(title=image_name).first()
             if existing_image:
-                # Update alt text if provided and not already set
+
                 if alt_text and not existing_image.alt_text:
                     existing_image.alt_text = alt_text
                     existing_image.caption = caption
                     existing_image.save()
                     utils.styled_output(
-                        f"    - Updated existing image with alt: '{existing_image.alt_text}'"
+                        f"\t- Updated existing image with alt: '{existing_image.alt_text}'"
                     )
                 return existing_image
 

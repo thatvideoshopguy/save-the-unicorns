@@ -6,7 +6,7 @@ from django.db import DatabaseError, ProgrammingError
 
 from wagtail.models import Page
 
-from apps.core.management import WagtailSetupUtils
+from apps.core.utils import WagtailSetupUtils
 from apps.sightings.models import SightingModel, SightingPage
 
 
@@ -32,7 +32,7 @@ class Command(BaseCommand):
             help="Force deletion of existing sightings pages and recreate them",
         )
         parser.add_argument(
-            "--fixtures-file",
+            "--load-fixtures",
             action="store_true",
             help="Load location fixtures data",
         )

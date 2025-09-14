@@ -16,7 +16,7 @@ class HomePage(Page):
         context = super().get_context(request)
 
         try:
-            blog_index = self.get_children().type(BlogIndexPage).live().first()
+            blog_index = self.get_children().type(BlogIndexPage).live().specific().first()
             context["latest_blogs"] = blog_index.get_latest_blogs(3) if blog_index else []
         except (AttributeError, BlogIndexPage.DoesNotExist):
             context["latest_blogs"] = []

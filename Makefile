@@ -8,6 +8,8 @@ PROJECT_SLUG=save-the-unicorns
 #
 # Add any targets specific to the current project in here.
 
+django-setup-wagtail:
+	./manage.py setup_wagtail
 
 # -------------------------------
 # Common targets for Dev projects
@@ -25,13 +27,13 @@ nuke: ## Full wipe of the local environment, uncommitted files, and database.
 nuke: venv-check venv-wipe git-full-clean database-drop
 
 reset: ## Reset your local environment. Useful after switching branches, etc.
-reset: venv-check venv-wipe install-local database-drop django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites
+reset: venv-check venv-wipe install-local database-drop django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites django-setup-wagtail
 
 full-reset: ## Reset your local environment and download all media files.
-full-reset: venv-check venv-wipe install-local django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites
+full-reset: venv-check venv-wipe install-local django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites django-setup-wagtail
 
 clear: ## Like reset but without the wiping of the installs.
-clear: django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites
+clear: django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites django-setup-wagtail
 
 check: ## Check for any obvious errors in the project's setup.
 check: pipdeptree-check npm-check django-check

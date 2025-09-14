@@ -6,12 +6,12 @@ from django.db import IntegrityError
 
 from wagtail.models import Page, Site
 
-from apps.core.management import WagtailSetupUtils
+from apps.core.utils import WagtailSetupUtils
 from apps.core.models import HomePage
 
 
 class Command(BaseCommand):
-    help = "Set up the homepage with initial content"
+    help = "Set up the home page with initial content"
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -20,24 +20,17 @@ class Command(BaseCommand):
             default="apps/core/content/home.yaml",
             help="The file containing the home index content",
         )
-        parser.add_argument(
-            "--force",
-            action="store_true",
-            help="Force deletion of existing homepage and recreate it",
-        )
 
     def handle(self, *args, **options):
         content_file = Path(options["content_file"])
-        force = options["force"]
         utils = WagtailSetupUtils(self)
 
         utils.styled_output("Setting up homepage...")
 
-        # Clean up existing content if force flag is used
-        if force:
-            utils.styled_output("Cleaning up existing content...")
-            Site.objects.all().delete()
-            Page.objects.all().delete()
+        # Clean up existing content
+        utils.styled_output("Cleaning up existing content...")
+        Site.objects.all().delete()
+        Page.objects.all().delete()
 
         root_page = utils.ensure_page_tree_health()
 
@@ -45,31 +38,14 @@ class Command(BaseCommand):
         existing_homepage = existing_children.type(HomePage).first()
         existing_home_slug = existing_children.filter(slug="home").first()
 
-        if existing_homepage and not force:
+        if existing_homepage:
+            utils.styled_output(f"Deleting existing homepage: {existing_homepage.title}")
+            existing_homepage.delete()
+        if existing_home_slug and existing_home_slug != existing_homepage:
             utils.styled_output(
-                f"Homepage already exists: {existing_homepage.title}. Use --force to recreate.",
-                "WARNING",
+                f"Deleting existing page with slug 'home': {existing_home_slug.title}"
             )
-            self._setup_site_for_homepage(utils, existing_homepage)
-            return
-
-        if existing_home_slug and not force:
-            utils.styled_output(
-                f"A page with slug 'home' already exists: {existing_home_slug.title}. "
-                "Use --force to recreate.",
-                "WARNING",
-            )
-            return
-
-        if force and (existing_homepage or existing_home_slug):
-            if existing_homepage:
-                utils.styled_output(f"Deleting existing homepage: {existing_homepage.title}")
-                existing_homepage.delete()
-            if existing_home_slug and existing_home_slug != existing_homepage:
-                utils.styled_output(
-                    f"Deleting existing page with slug 'home': {existing_home_slug.title}"
-                )
-                existing_home_slug.delete()
+            existing_home_slug.delete()
 
         utils.styled_output("Creating new homepage...")
 
