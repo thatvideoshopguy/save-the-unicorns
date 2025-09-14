@@ -7,7 +7,6 @@
 
     .navbar {
         &.is-top-menu {
-
             .navbar-item {
                 font-family: $family-raleway;
                 font-weight: $family-raleway-weight;
@@ -55,7 +54,6 @@
         }
     }
 
-
     // Responsive adjustments using your own breakpoints
     @media (max-width: $breakpoint-mobile) {
         .navbar {
@@ -87,5 +85,4 @@
             }
         }
     }
-
 }

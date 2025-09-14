@@ -1,5 +1,6 @@
-from django.shortcuts import render
 from django.http import Http404
+from django.shortcuts import render
+
 from apps.donations.forms import DonationForm
 
 
@@ -16,12 +17,11 @@ def donation_view(request):
                 "donations/fragments/donate_success_fragment.html",
                 {"donation": donation},
             )
-        else:
-            return render(
-                request,
-                "donations/fragments/donate_form_fragment.html",
-                {"form": form},
-            )
+        return render(
+            request,
+            "donations/fragments/donate_form_fragment.html",
+            {"form": form},
+        )
 
     form = DonationForm()
     return render(

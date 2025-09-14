@@ -7,6 +7,7 @@ from django.urls import include, path
 from django.views.decorators.cache import never_cache
 from django.views.generic import TemplateView
 from django.views.static import serve
+
 from apps.core.views import server_error
 from apps.donations.views import donation_view
 
@@ -20,9 +21,7 @@ urlpatterns = [
         "robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")
     ),
     path("_health/", include("watchman.urls")),
-
-    path('donate/', donation_view, name='donate'),
-
+    path("donate/", donation_view, name="donate"),
     path("admin/", include("wagtail.admin.urls")),
     path("documents/", include("wagtail.documents.urls")),
     # All pages route through Wagtail

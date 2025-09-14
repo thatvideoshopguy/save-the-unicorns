@@ -1,7 +1,8 @@
 from django.db import models
-from wagtail.models import Page
-from wagtail.fields import RichTextField
+
 from wagtail.admin.panels import FieldPanel
+from wagtail.fields import RichTextField
+from wagtail.models import Page
 
 
 class BlogPage(Page):
@@ -12,7 +13,8 @@ class BlogPage(Page):
         "core.CustomImage", null=True, blank=True, on_delete=models.SET_NULL, related_name="+"
     )
 
-    content_panels = Page.content_panels + [
+    content_panels = [
+        *Page.content_panels,
         FieldPanel("date"),
         FieldPanel("intro"),
         FieldPanel("body"),

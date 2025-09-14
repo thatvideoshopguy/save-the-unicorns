@@ -1,4 +1,5 @@
 from django.db import models
+
 from wagtail.images.models import AbstractImage, AbstractRendition, Image
 
 
@@ -12,7 +13,7 @@ class CustomImage(AbstractImage):
         help_text="Alternative text for screen readers. Leave empty for decorative images.",
     )
 
-    admin_form_fields = Image.admin_form_fields + ("alt_text",)
+    admin_form_fields = (*Image.admin_form_fields, "alt_text")
 
     # Override the default_alt_text property to use our custom field
     @property

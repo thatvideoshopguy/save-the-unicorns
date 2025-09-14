@@ -1,12 +1,11 @@
 @use '../mixins/mixins' as *;
 
 .logo {
-    background: url(../img/logo.png) left center/contain no-repeat;
+    background: url('../img/logo.png') left center/contain no-repeat;
 
     &--header {
         width: 120px;
         height: 120px;
-
 
         @include mobile {
             width: 80px;

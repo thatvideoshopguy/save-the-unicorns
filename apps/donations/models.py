@@ -1,6 +1,7 @@
-from django.db import models
-from django.core.validators import MinValueValidator
 from decimal import Decimal
+
+from django.core.validators import MinValueValidator
+from django.db import models
 
 
 class Donation(models.Model):
@@ -10,8 +11,8 @@ class Donation(models.Model):
     )
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self):
-        return f"{self.name} - ${self.amount}"
-
     class Meta:
         ordering = ["-created_at"]
+
+    def __str__(self):
+        return f"{self.name} - ${self.amount}"

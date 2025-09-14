@@ -1,14 +1,19 @@
 import os
-from django.http import HttpResponseServerError
+
+from django.http import HttpRequest, HttpResponseServerError
 from django.template import TemplateDoesNotExist, loader
+from django.template.response import TemplateResponse
 from django.views.decorators.csrf import requires_csrf_token
+
 from sentry_sdk import last_event_id
 
 ERROR_500_TEMPLATE_NAME = "500.html"
 
 
 @requires_csrf_token
-def server_error(request, template_name=ERROR_500_TEMPLATE_NAME):
+def server_error(
+    request: HttpRequest, template_name: str = ERROR_500_TEMPLATE_NAME
+) -> TemplateResponse | HttpResponseServerError:
     """
     500 error handler with request context and Sentry Event ID.
     """

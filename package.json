@@ -1,5 +1,12 @@
 {
-    "browserslist": "supports es6-module and last 3 versions, Firefox ESR, last 3 Safari major versions, last 3 iOS major versions, not dead",
+    "browserslist": [
+        "supports es6-module",
+        "last 3 versions",
+        "Firefox ESR",
+        "last 3 Safari major versions",
+        "last 3 iOS major versions",
+        "not dead"
+    ],
     "dependencies": {
         "@babel/preset-env": "^7.23.8",
         "autoprefixer": "^10.4.16",

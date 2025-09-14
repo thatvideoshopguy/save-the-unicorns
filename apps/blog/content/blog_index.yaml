@@ -1,0 +1,4 @@
+blog_index:
+    title: "Blog",
+    slug: "blog",
+    intro: <p>Latest news and insights about unicorn conservation efforts and sightings.</p>

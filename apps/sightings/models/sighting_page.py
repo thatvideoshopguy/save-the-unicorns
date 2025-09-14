@@ -6,7 +6,7 @@ from wagtail.admin.panels import FieldPanel
 from wagtail.fields import RichTextField
 from wagtail.models import Page
 
-from .sighting_model import Sighting
+from apps.sightings.models.sighting_model import SightingModel
 
 
 class SightingPage(Page):
@@ -16,7 +16,8 @@ class SightingPage(Page):
     )
     zoom_level = models.IntegerField(default=6, help_text="Initial zoom level")
 
-    content_panels = Page.content_panels + [
+    content_panels = [
+        *Page.content_panels,
         FieldPanel("intro"),
         FieldPanel("map_center"),
         FieldPanel("zoom_level"),
@@ -24,13 +25,15 @@ class SightingPage(Page):
 
     def get_context(self, request, *args, **kwargs):
         context = super().get_context(request, *args, **kwargs)
-        sightings = Sighting.objects.exclude(point__isnull=True)
+        sightings = SightingModel.objects.exclude(point__isnull=True)
 
         sightings_data = []
         for sighting in sightings:
             popup_html = (
                 render_to_string(
-                    "sightings/includes/leaflet_marker_popup.html", {"sighting": sighting}, request=request
+                    "sightings/includes/leaflet_marker_popup.html",
+                    {"sighting": sighting},
+                    request=request,
                 )
                 .replace("\n", "")
                 .replace('"', '\\"')

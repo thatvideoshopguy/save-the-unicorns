@@ -1,13 +1,16 @@
-from django.core.management import call_command
-from wagtail.models import Page, Site
-from typing import Type
-from django.db import models, DatabaseError, ProgrammingError
+from pathlib import Path
+
 from django.core.exceptions import ImproperlyConfigured
+from django.core.management import call_command
+from django.db import DatabaseError, ProgrammingError, models
+
+import yaml
+from wagtail.models import Page, Site
+
 from apps.core.models import HomePage
 
 
 class WagtailSetupUtils:
-
     def __init__(self, command_instance):
         self.command = command_instance
 
@@ -29,7 +32,10 @@ class WagtailSetupUtils:
         try:
             call_command("fixtree")
             self.styled_output("Page tree fixed")
-        except Exception as e:
+        except (
+            DatabaseError,
+            ProgrammingError,
+        ) as e:
             self.styled_output(f"Warning: Could not fix tree: {e}", "WARNING")
 
         return self.get_or_create_root_page()
@@ -40,32 +46,30 @@ class WagtailSetupUtils:
             root_page = Page.get_first_root_node()
             if root_page:
                 self.styled_output(f"Found existing root page: {root_page.title}")
-                # Verify the root page can accept children
                 try:
                     children_count = root_page.get_children().count()
                     self.styled_output(f"Root page has {children_count} children")
-                    return root_page
-                except Exception as e:
+                except (DatabaseError, ProgrammingError) as e:
                     self.styled_output(f"Root page tree structure is corrupted: {e}", "ERROR")
-                    # Fall through to recreation
+                else:
+                    return root_page
             else:
                 self.styled_output("No root page found")
-        except Exception as e:
+        except (DatabaseError, ProgrammingError) as e:
             self.styled_output(f"Error getting root page: {e}", "ERROR")
 
-        # Create new root page
         self.styled_output("Creating new root page...")
         try:
-            # Delete any existing corrupted pages
             Page.objects.all().delete()
             root_page = Page.add_root(title="Root", slug="root")
             self.styled_output(f"Created root page: {root_page}")
-            return root_page
-        except Exception as e:
+        except (DatabaseError, ProgrammingError) as e:
             self.styled_output(f"Failed to create root page: {e}", "ERROR")
             raise
+        else:
+            return root_page
 
-    def cleanup_pages_by_type(self, page_types: list[Type[models.Model]]) -> dict[str, int]:
+    def cleanup_pages_by_type(self, page_types: list[type[models.Model]]) -> dict[str, int]:
         """Generic cleanup for pages by type"""
         deleted_counts = {}
 
@@ -85,17 +89,17 @@ class WagtailSetupUtils:
         if existing_page:
             if force:
                 self.styled_output(
-                    f"  - Found existing page with slug '{slug}': {existing_page}. Deleting due to --force flag."
+                    f"  - Found existing page with slug '{slug}': {existing_page}. "
+                    f"Deleting due to --force flag."
                 )
                 existing_page.delete()
                 return True
-            else:
-                self.styled_output(
-                    f"A page with slug '{slug}' already exists: {existing_page}\n"
-                    f"Use --force flag to delete it, or delete it manually in the admin.",
-                    "ERROR",
-                )
-                return False
+            self.styled_output(
+                f"A page with slug '{slug}' already exists: {existing_page}\n"
+                f"Use --force flag to delete it, or delete it manually in the admin.",
+                "ERROR",
+            )
+            return False
 
         return True
 
@@ -122,11 +126,11 @@ class WagtailSetupUtils:
 
             action = "Created" if created else "Updated"
             self.styled_output(f"{action} site: {site}")
-            return site
-
-        except Exception as e:
+        except (DatabaseError, ProgrammingError) as e:
             self.styled_output(f"Failed to setup site: {e}", "ERROR")
             raise
+        else:
+            return site  # Fix: Moved to else block
 
     def debug_page_tree(self) -> None:
         """Debug the page tree structure"""
@@ -138,18 +142,19 @@ class WagtailSetupUtils:
                     f"  ID: {page.id}, Title: {page.title}, Slug: {page.slug}, "
                     f"Depth: {page.depth}, Path: {page.path}, Type: {type(page).__name__}"
                 )
-        except Exception as e:
+        except (DatabaseError, ProgrammingError) as e:
             self.styled_output(f"Error debugging page tree: {e}", "ERROR")
 
     @staticmethod
-    def check_model_tables_exist(django_models: list[Type[models.Model]]) -> bool:
+    def check_model_tables_exist(django_models: list[type[models.Model]]) -> bool:
         """Check if database tables exist for given models"""
         try:
             for model in django_models:
                 model.objects.count()
-            return True
         except (DatabaseError, ProgrammingError, ImproperlyConfigured):
             return False
+        else:
+            return True
 
     def create_and_publish_page(
         self, parent_page: Page, page_instance: Page, alternative_method: bool = False
@@ -157,21 +162,16 @@ class WagtailSetupUtils:
         """Create and publish a page with error handling"""
         try:
             if alternative_method:
-                # Save first, then add to tree
                 page_instance.save()
                 parent_page.add_child(instance=page_instance)
             else:
-                # Standard method
                 parent_page.add_child(instance=page_instance)
 
-            # Publish the page
             revision = page_instance.save_revision()
             revision.publish()
 
             self.styled_output(f"Created and published: {page_instance.title}")
-            return page_instance
-
-        except Exception as e:
+        except (DatabaseError, ProgrammingError) as e:
             if not alternative_method:
                 self.styled_output(
                     f"Standard method failed: {e}. Trying alternative...", "WARNING"
@@ -179,10 +179,11 @@ class WagtailSetupUtils:
                 return self.create_and_publish_page(
                     parent_page, page_instance, alternative_method=True
                 )
-            else:
-                self.styled_output(f"Alternative method also failed: {e}", "ERROR")
-                self.debug_page_tree()
-                raise
+            self.styled_output(f"Alternative method also failed: {e}", "ERROR")
+            self.debug_page_tree()
+            raise
+        else:
+            return page_instance
 
     def get_parent_page(self) -> Page | None:
         """Get the parent page for the blog (homepage or root)"""
@@ -202,3 +203,9 @@ class WagtailSetupUtils:
 
         self.styled_output(f"Using root page as parent: {root_page.title}")
         return root_page
+
+    @staticmethod
+    def load_page_content(content_file: Path, root_key: str) -> dict:
+        """Load page contents of yaml file into memory"""
+        with content_file.open() as f:
+            return yaml.safe_load(f)[root_key]

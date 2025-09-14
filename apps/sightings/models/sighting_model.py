@@ -1,13 +1,14 @@
 from django.contrib.gis.db import models
 from django.contrib.gis.geos import Point
+
 from wagtail.admin.panels import FieldPanel
 from wagtail.snippets.models import register_snippet
 
 
 @register_snippet
-class Sighting(models.Model):
+class SightingModel(models.Model):
     location_name = models.CharField(max_length=200)
-    location_point = models.PointField(srid=4326, help_text="Location coordinates (EPSG:4326 - WGS84)")
+    location_point = models.PointField(srid=4326, help_text="Location coordinates")
     description = models.TextField(blank=True)
     sighted_by = models.CharField(max_length=255)
     sighted_at = models.DateField(blank=True, null=True)
@@ -21,6 +22,9 @@ class Sighting(models.Model):
         FieldPanel("sighted_by", heading="Witnessed by"),
         FieldPanel("sighted_at", heading="Date of sighting"),
     ]
+
+    class Meta:
+        ordering = ["location_name"]
 
     def __str__(self):
         return f"{self.location_name} - {self.sighted_by}"
@@ -40,19 +44,15 @@ class Sighting(models.Model):
         return None
 
     @classmethod
-    def create_from_coords(cls, name: str, lat: float, lng: float, **kwargs) -> "Sighting":
+    def create_from_coords(cls, name: str, lat: float, lng: float, **kwargs) -> "SightingModel":
         """Helper method to create location from lat/lng coordinates"""
         if lat is not None and lng is not None:
             point = Point(float(lng), float(lat), srid=4326)
             return cls.objects.create(name=name, point=point, **kwargs)
-        else:
-            raise ValueError("Latitude and longitude must not be None")
+        raise ValueError("Latitude and longitude must not be None")
 
     def distance_to(self, other_point: Point) -> float | None:
         """Calculate distance to another point (returns distance in meters)"""
         if self.location_point and other_point:
             return self.location_point.distance(other_point)
         return None
-
-    class Meta:
-        ordering = ["location_name"]

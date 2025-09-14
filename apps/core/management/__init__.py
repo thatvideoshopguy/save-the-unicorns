@@ -1,1 +1,1 @@
-from .wagtail_setup_utils import WagtailSetupUtils
+from .wagtail_setup_utils import WagtailSetupUtils as WagtailSetupUtils
