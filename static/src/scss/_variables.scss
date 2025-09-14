@@ -1,8 +1,3 @@
-// Base sizes
-$base-font-size: 1rem !default;
-$base-line-height: 1.5 !default;
-$base-font: 'Open Sans';
-
 // Colours
 $color-primary: #f172a1;
 $color-primary-dark: #e64398;
@@ -26,6 +21,11 @@ $breakpoint-mobile: 640px;
 $breakpoint-desktop: 960px;
 $breakpoint-desktop-large: 1280px;
 
-// Additional Typeface
+// Typefaces
 $family-raleway: 'Raleway', sans-serif;
-$family-raleway-weight: 600;
+$family-raleway-bold: 600;
+$family-corben: 'Corben', sans-serif;
+$family-corben-bold: 700;
+$family-lato: 'Lato', sans-serif;
+$family-lato-normal: 400;
+$family-lato-bold: 700;

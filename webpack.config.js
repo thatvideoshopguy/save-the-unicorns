@@ -7,6 +7,9 @@ const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const WebpackNotifierPlugin = require('webpack-notifier');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 const sassEmbedded = require('sass-embedded');
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 // Webpack clean dist
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -24,8 +27,27 @@ const config = {
     },
     output: {
         path: path.resolve('./static/dist/'),
-        filename: 'js/[name].js',
+        filename: 'js/[name].[contenthash:8].js',
         assetModuleFilename: 'assets/[hash][ext][query]',
+    },
+    sharedPlugins: {
+        svgSprite: new SVGSpritemapPlugin('./static/src/sprite/*.svg', {
+            output: {
+                filename: './svg/sprite.svg',
+            },
+            sprite: {
+                prefix: false,
+            },
+        }),
+        miniCssExtract: new MiniCssExtractPlugin({
+            filename: 'css/[name].[contenthash:8].css',
+            chunkFilename: 'css/[id].[contenthash:8].css',
+            ignoreOrder: true,
+        }),
+        manifest: new WebpackManifestPlugin({
+            fileName: 'manifest.json',
+            publicPath: '/static/dist/',
+        }),
     },
 };
 
@@ -42,23 +64,11 @@ module.exports = [
                 cleanStaleWebpackAssets: false,
             }),
 
-            // SVG sprite
-            new SVGSpritemapPlugin('./static/src/sprite/*.svg', {
-                output: {
-                    filename: './svg/sprite.svg',
-                },
-                sprite: {
-                    prefix: false,
-                },
-            }),
+            // Shared plugins
+            config.sharedPlugins.svgSprite,
+            config.sharedPlugins.manifest,
+            config.sharedPlugins.miniCssExtract,
 
-            // Set css name
-            new MiniCssExtractPlugin({
-                filename: 'css/[name].css',
-                chunkFilename: 'css/[id].css',
-            }),
-
-            // Stylelint plugin
             new StyleLintPlugin({
                 files: 'static/src/scss',
                 failOnError: false,
@@ -155,7 +165,6 @@ module.exports = [
         },
 
         stats: {
-            // Colors and log settings
             colors: true,
             version: true,
             timings: true,
@@ -172,32 +181,22 @@ module.exports = [
             publicPath: false,
         },
 
-        // Create Sourcemaps for the files
         devtool: 'source-map',
     },
+
     // Production webpack config
+    // Source maps are disabled to reduce filesize
     {
         name: 'production',
         entry: config.entry,
         output: config.output,
 
         plugins: [
-            // SVG sprite
-            new SVGSpritemapPlugin('./static/src/sprite/*.svg', {
-                output: {
-                    filename: './svg/sprite.svg',
-                },
-                sprite: {
-                    prefix: false,
-                },
-            }),
+            // Shared plugins
+            config.sharedPlugins.svgSprite,
+            config.sharedPlugins.manifest,
+            config.sharedPlugins.miniCssExtract,
 
-            // Specify the resulting CSS filename
-            new MiniCssExtractPlugin({
-                filename: 'css/[name].css',
-            }),
-
-            // Stylelint plugin
             new StyleLintPlugin({
                 configFile: '.stylelintrc',
                 context: '',
@@ -206,7 +205,49 @@ module.exports = [
                 failOnError: false,
                 quiet: false,
             }),
+
+            new ImageMinimizerPlugin({
+                minimizer: {
+                    implementation: ImageMinimizerPlugin.sharpMinify,
+                    options: {
+                        encodeOptions: {
+                            jpeg: { quality: 75 },
+                            png: { quality: 90 },
+                        },
+                    },
+                },
+            }),
         ],
+
+        optimization: {
+            minimizer: [
+                new TerserPlugin({
+                    terserOptions: {
+                        compress: {
+                            drop_console: true,
+                        },
+                    },
+                }),
+            ],
+            splitChunks: {
+                cacheGroups: {
+                    // Split vendor CSS
+                    vendorStyles: {
+                        name: 'vendor',
+                        test: /[\\/]node_modules[\\/].*\.(css|scss)$/,
+                        chunks: 'all',
+                        enforce: true,
+                    },
+                    // Split your own styles by component/page
+                    criticalStyles: {
+                        name: 'critical',
+                        test: /critical.*\.(css|scss)$/,
+                        chunks: 'all',
+                        priority: 30,
+                    },
+                },
+            },
+        },
 
         module: {
             rules: [
@@ -232,21 +273,36 @@ module.exports = [
                     test: /\.(png|jpg|woff|woff2|eot|ttf|svg|otf)$/,
                     exclude: /node_modules/,
                     type: 'asset/resource',
+                    parser: {
+                        dataUrlCondition: {
+                            maxSize: 4 * 1024, // Inline images smaller than 4KB
+                        },
+                    },
                 },
                 {
                     test: /\.scss$/,
                     use: [
                         MiniCssExtractPlugin.loader,
-                        'css-loader',
-                        'postcss-loader',
+                        {
+                            loader: 'css-loader',
+                            options: {
+                                importLoaders: 2,
+                                sourceMap: false,
+                            },
+                        },
+                        {
+                            loader: 'postcss-loader',
+                            options: { sourceMap: false },
+                        },
                         {
                             loader: 'sass-loader',
                             options: {
                                 api: 'modern',
-                                sourceMap: true,
+                                sourceMap: false,
                                 implementation: sassEmbedded,
                                 sassOptions: {
                                     loadPaths: ['node_modules'],
+                                    outputStyle: 'compressed',
                                 },
                             },
                         },
@@ -255,7 +311,6 @@ module.exports = [
             ],
         },
 
-        // Create Sourcemaps for the files
-        devtool: 'source-map',
+        devtool: false,
     },
 ];
