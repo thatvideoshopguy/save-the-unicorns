@@ -15,7 +15,6 @@ from pathlib import Path
 
 from django.db.models.fields import BLANK_CHOICE_DASH
 
-import dj_database_url
 
 # The unique project name in slug form
 PROJECT_SLUG = "save-the-unicorns"
@@ -103,8 +102,6 @@ WSGI_APPLICATION = "project.wsgi.application"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
 DATABASES = {}
-if os.environ.get("DATABASE_URL"):
-    DATABASES["default"] = dj_database_url.config()
 
 # Caches
 # https://docs.djangoproject.com/en/5.2/topics/cache/
