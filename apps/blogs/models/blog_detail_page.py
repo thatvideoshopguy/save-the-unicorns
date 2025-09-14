@@ -6,7 +6,7 @@ from wagtail.models import Page
 
 
 class BlogDetailPage(Page):
-    template = 'blogs/blog_detail.html'
+    template = "blogs/blog_detail.html"
 
     date = models.DateField("Post date")
     intro = models.CharField(max_length=250)

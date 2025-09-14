@@ -6,8 +6,8 @@ from django.db import IntegrityError
 
 from wagtail.models import Page, Site
 
-from apps.core.utils import WagtailSetupUtils
 from apps.core.models import HomePage
+from apps.core.utils import WagtailSetupUtils
 
 
 class Command(BaseCommand):

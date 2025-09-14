@@ -18,4 +18,4 @@ class DonationForm(forms.ModelForm):
                 }
             ),
         }
-        labels = {"name": "Your Name", "amount": "Donation Amount ($)"}
+        labels = {"name": "Your Name", "amount": "Donation Amount (£)"}

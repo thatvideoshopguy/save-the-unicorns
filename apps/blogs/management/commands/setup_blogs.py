@@ -13,9 +13,9 @@ import markdown
 from PIL import Image as PILImage
 from wagtail.models import Page
 
-from apps.blogs.models import BlogIndexPage, BlogDetailPage
-from apps.core.utils import WagtailSetupUtils
+from apps.blogs.models import BlogDetailPage, BlogIndexPage
 from apps.core.models import CustomImage
+from apps.core.utils import WagtailSetupUtils
 
 
 class Command(BaseCommand):
@@ -213,7 +213,6 @@ class Command(BaseCommand):
             # Check if image already exists
             existing_image = CustomImage.objects.filter(title=image_name).first()
             if existing_image:
-
                 if alt_text and not existing_image.alt_text:
                     existing_image.alt_text = alt_text
                     existing_image.caption = caption

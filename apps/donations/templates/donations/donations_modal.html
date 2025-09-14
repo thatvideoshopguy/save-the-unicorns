@@ -1,15 +1,14 @@
-<div class="modal" id="modal-card">
+<div class="modal donations-modal" id="modal-card">
   <div class="modal-background"></div>
   <div class="modal-card">
     <header class="modal-card-head">
-      <p class="modal-card-title">Make a Donation</p>
+      <p class="modal-card-title is-centered">Make a Donation</p>
       <button class="delete" aria-label="close"></button>
     </header>
     <section class="modal-card-body">
       <div id="modal-content"
            hx-get="{% url 'donate' %}"
            hx-trigger="revealed">
-        <!-- Loading state -->
         <div class="has-text-centered">
           <div class="button is-loading is-static">Loading...</div>
         </div>

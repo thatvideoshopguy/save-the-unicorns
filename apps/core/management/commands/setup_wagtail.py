@@ -46,9 +46,7 @@ class Command(BaseCommand):
                     )
                     setup_error_msg = f"Setup failed at {command_name}"
                     raise CommandError(setup_error_msg) from e
-                self.stdout.write(
-                    self.style.WARNING(f"Skipping {command_name} and continuing...")
-                )
+                self.stdout.write(self.style.WARNING(f"Skipping {command_name} and continuing..."))
 
             except (ImportError, AttributeError, ValueError, TypeError) as e:
                 error_msg = f"Unexpected error in {command_name}: {e!s}"

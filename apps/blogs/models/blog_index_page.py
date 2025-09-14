@@ -6,7 +6,7 @@ from apps.blogs.models.blog_detail_page import BlogDetailPage
 
 
 class BlogIndexPage(Page):
-    template = 'blogs/blog_index.html'
+    template = "blogs/blog_index.html"
 
     intro = RichTextField(blank=True)
 

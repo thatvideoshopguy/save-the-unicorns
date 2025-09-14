@@ -21,7 +21,7 @@ urlpatterns = [
         "robots.txt", TemplateView.as_view(template_name="robots.txt", content_type="text/plain")
     ),
     path("_health/", include("watchman.urls")),
-    path("donate/", donation_view, name="donate"),
+    path("api/donate/", donation_view, name="donate"),
     path("admin/", include("wagtail.admin.urls")),
     path("documents/", include("wagtail.documents.urls")),
     # All pages route through Wagtail
