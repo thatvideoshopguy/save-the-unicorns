@@ -1,6 +1,7 @@
 @use '../_variables' as *;
 
 .donations-modal {
+    z-index: 405;
     .modal-card-head {
         box-shadow: none;
     }
