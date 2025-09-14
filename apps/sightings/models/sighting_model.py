@@ -48,7 +48,7 @@ class SightingModel(models.Model):
         """Helper method to create location from lat/lng coordinates"""
         if lat is not None and lng is not None:
             point = Point(float(lng), float(lat), srid=4326)
-            return cls.objects.create(name=name, point=point, **kwargs)
+            return cls.objects.create(location_name=name, location_point=point, **kwargs)
         raise ValueError("Latitude and longitude must not be None")
 
     def distance_to(self, other_point: Point) -> float | None:
