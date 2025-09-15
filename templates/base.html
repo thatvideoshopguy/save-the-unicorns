@@ -7,7 +7,7 @@
   <head>
     <title>
       {% block title %}
-        {{ request.site.name }}
+        {{ current_site.site_name }}
       {% endblock title %}
     </title>
     <link rel="stylesheet" href="{% webpack_static 'styles.css' %}" />

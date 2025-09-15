@@ -4,6 +4,8 @@ import time
 
 from django.conf import settings
 
+from wagtail.models import Site
+
 BROWSERSYNC_URL = "http://{host}:{port}/browser-sync/browser-sync-client.js?t={time}"
 
 
@@ -61,3 +63,11 @@ def sentry_config(request):
 
 def demo(request):
     return {"DEMO_SITE": settings.DEMO_SITE}
+
+
+def site_context(request):
+    try:
+        site = Site.find_for_request(request)
+        return {"current_site": site}
+    except:
+        return {"current_site": None}

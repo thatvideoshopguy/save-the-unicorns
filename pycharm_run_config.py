@@ -12,7 +12,7 @@ def main():
         default="project.settings.local",
         help="Django settings module (default: project.settings.local)",
     )
-    parser.add_argument("--port", default="8000", help="Port to run server on (default: 8000)")
+    parser.add_argument("--port", default="8005", help="Port to run server on (default: 8005)")
     parser.add_argument("--host", default="127.0.0.1", help="Host to bind to (default: 127.0.0.1)")
 
     args = parser.parse_args()

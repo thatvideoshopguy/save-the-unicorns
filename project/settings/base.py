@@ -178,6 +178,7 @@ TEMPLATES = [
                 "django.contrib.messages.context_processors.messages",
                 "apps.core.context_processors.demo",
                 "apps.core.context_processors.sentry_config",
+                "apps.core.context_processors.site_context",
             ]
         },
     }

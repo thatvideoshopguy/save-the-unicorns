@@ -77,8 +77,8 @@ git-full-clean:
 	git clean -ffdx
 
 database-drop:
-	docker compose -f docker-compose.dev.yaml down -v --remove-orphans
-	docker compose -f docker-compose.dev.yaml up -d --build --wait
+	docker compose -f docker-compose.dev.yaml --env-file .env.local down -v --remove-orphans
+	docker compose -f docker-compose.dev.yaml --env-file .env.local up -d --build --wait
 
 # Installs
 install-local: npm-install pip-install-local

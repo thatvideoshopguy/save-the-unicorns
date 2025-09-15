@@ -8,7 +8,7 @@ from .base import *  # noqa:F403
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ")
 
-DEBUG = True
+DEBUG = False
 
 # Persistent database connections
 DATABASES = {
