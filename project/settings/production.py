@@ -8,7 +8,7 @@ from .base import *  # noqa:F403
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ")
 
-DEBUG = False
+DEBUG = os.environ.get("DEBUG")
 
 # Persistent database connections
 DATABASES = {
@@ -73,3 +73,7 @@ if os.environ.get("ELASTIC_APM_SERVER_URL"):
 # Cache sessions for optimum performance
 if os.environ.get("REDIS_SERVERS"):
     SESSION_ENGINE = "django.contrib.sessions.backends.cache"
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+USE_X_FORWARDED_HOST = True
+USE_X_FORWARDED_PORT = True
