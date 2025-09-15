@@ -1,6 +1,4 @@
 # ruff: noqa:F405
-import os
-from pathlib import Path
 
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
@@ -10,15 +8,21 @@ from .base import *  # noqa:F403
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ")
 
-DEBUG = False
+DEBUG = True
 
 # Persistent database connections
-if os.environ.get("DATABASE_CONN_MAX_AGE"):
-    DATABASES["default"]["CONN_MAX_AGE"] = int(os.environ.get("DATABASE_CONN_MAX_AGE"))
-
-# Avoid server side cursors with pgbouncer
-if os.environ.get("DATABASE_PGBOUNCER"):
-    DATABASES["default"]["DISABLE_SERVER_SIDE_CURSORS"] = True
+DATABASES = {
+    "default": {
+        "ENGINE": "django.contrib.gis.db.backends.postgis",
+        "NAME": os.environ.get("POSTGRES_DB"),
+        "USER": os.environ.get("POSTGRES_USER"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+        "HOST": os.environ.get("DJANGO_DATABASE_HOST"),
+        "PORT": os.environ.get("DJANGO_DATABASE_PORT"),
+        "CONN_MAX_AGE": 60,
+        "DISABLE_SERVER_SIDE_CURSORS": True,
+    }
+}
 
 # Use cached templates in production
 TEMPLATES[0]["APP_DIRS"] = False

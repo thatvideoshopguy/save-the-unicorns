@@ -249,3 +249,6 @@ static/dist
 # DS Store files
 *.DS_Store
 /shared-libs/
+.env.prod
+.env.local
+/redis.conf

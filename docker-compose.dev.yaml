@@ -9,6 +9,8 @@ services:
             - "5432:5432"
         volumes:
             - postgres_data:/var/lib/postgresql/data
+        env_file:
+            - .env.local
         healthcheck:
             test: [ "CMD-SHELL", "pg_isready -U ${DJANGO_DATABASE_USERNAME} -d ${DJANGO_DATABASE_NAME}" ]
             interval: 10s
@@ -23,7 +25,7 @@ services:
         volumes:
             - redis_data:/data
         env_file:
-            .env
+            - .env.local
         command: redis-server --requirepass ${REDIS_PASSWORD}
         healthcheck:
             test: [ "CMD", "redis-cli", "--raw", "incr", "ping" ]

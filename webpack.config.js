@@ -4,7 +4,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const StyleLintPlugin = require('stylelint-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
-const WebpackNotifierPlugin = require('webpack-notifier');
 const SVGSpritemapPlugin = require('svg-spritemap-webpack-plugin');
 const sassEmbedded = require('sass-embedded');
 const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
@@ -95,8 +94,6 @@ module.exports = [
                     reload: false,
                 },
             ),
-
-            new WebpackNotifierPlugin(),
         ],
 
         module: {
