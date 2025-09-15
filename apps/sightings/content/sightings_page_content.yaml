@@ -1,0 +1,5 @@
+sighting_page:
+    title: "Sightings"
+    slug: "sightings"
+    intro: <p>Explore confirmed unicorn sightings across the UK. Our dedicated team of researchers has documented these magical encounters over the years.</p>
+    zoom_level: 6

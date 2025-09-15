@@ -1,0 +1,11 @@
+@use '../variables' as *;
+
+.index-section {
+    .card {
+        .card-footer {
+            a {
+                color: $color-primary-dark;
+            }
+        }
+    }
+}

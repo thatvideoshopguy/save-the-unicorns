@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block main %}
+
+  <section class="hero is-fullheight-with-navbar hero-section">
+    <div class="hero-body is-family-secondary">
+      <div class="container has-text-centered">
+        <div class="title">
+          Keep Our<br/>
+          Rainbow<br/>
+          Alive
+        </div>
+        <div class="chevron-down"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="section is-medium about-section">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-vcentered">
+          <div
+            class="column is-6 is-flex-mobile is-justify-content-center is-align-items-center">
+            <div class="about-image"></div>
+          </div>
+          <div class="column is-4">
+            <h2 class="title">About</h2>
+            <div class="content">{{ page.about_text|richtext }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="blog" class="section is-medium blog-section">
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <h1 class="title">Latest News</h1>
+          <p>Stay updated with our latest unicorn conservation efforts and sightings</p>
+
+          <div class="card card--1">
+            <a href="{% pageurl latest_blogs.0 %}">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  {% image latest_blogs.0.featured_image fill-400x300 as blog_img %}
+                  <img src="{{ blog_img.url }}" alt="{{ latest_blogs.0.featured_image.alt_text }}"/>
+                </figure>
+              </div>
+              <div class="card-content">
+                <h3 class="title is-5">
+                  {{ latest_blogs.0.title }}
+                </h3>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="card card--2">
+            <a href="{% pageurl latest_blogs.1 %}">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  {% image latest_blogs.1.featured_image fill-400x300 as blog_img %}
+                  <img src="{{ blog_img.url }}" alt="{{ latest_blogs.1.featured_image.alt_text }}"/>
+                </figure>
+              </div>
+              <div class="card-content">
+                <h3 class="title is-5">
+                  {{ latest_blogs.1.title }}
+                </h3>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="card card--3">
+            <a href="{% pageurl latest_blogs.2 %}">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  {% image latest_blogs.2.featured_image fill-400x300 as blog_img %}
+                  <img src="{{ blog_img.url }}" alt="{{ latest_blogs.2.featured_image.alt_text }}"/>
+                </figure>
+              </div>
+              <div class="card-content">
+                <h3 class="title is-5">
+                  {{ latest_blogs.2.title }}
+                </h3>
+              </div>
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section sightings-section">
+    <div class="container">
+      <div class="columns is-vcentered is-justify-content-space-between">
+        <div class="column is-4">
+          <p>
+            Explore the world's largest database of confirmed unicorn sightings dating back to the
+            early 15th Century.
+          </p>
+        </div>
+        <div class="column is-5">
+          <a href="/sightings" class="sightings-link">
+            <h2 class="title">sightings</h2>
+            <div class="chevron-right"></div>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock main %}

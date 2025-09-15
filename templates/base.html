@@ -1,55 +1,45 @@
 <!DOCTYPE html>
-
 {% load i18n %}
 {% load static %}
-{% load wagtailcore_tags %}
-{% load wagtailuserbar %}
-
-{% wagtail_site as site %}
+{% load webpack_tags %}
 
 <html lang="{{ LANGUAGE_CODE }}"{% if LANGUAGE_BIDI %} dir="rtl"{% endif %}>
   <head>
     <title>
-      {% block title %}{{ site.site_name }}{% endblock %}
+      {% block title %}
+        {{ current_site.site_name }}
+      {% endblock title %}
     </title>
-    <link href="{% static 'dist/css/styles.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% webpack_static 'styles.css' %}" />
     <link rel="canonical" href="{{ request.build_absolute_uri }}" />
-
+    {% include 'includes/fonts.html' %}
     {% include 'includes/meta.html' %}
-
     {% if BROWSERSYNC_URL %}
       <script src="{{ BROWSERSYNC_URL }}" async></script>
     {% endif %}
-
-    {{ settings.settings.HeaderHTML.html|safe }}
-  </head>
-
-  <body>
-    {% wagtailuserbar %}
-
-    {% if DEMO_SITE %}
-      <div class="demo-announcement">
-        <div class="container">{% translate 'This site is in development. Any changes made here will not be transferred to the production build.' %}</div>
-      </div>
+    {% if SENTRY_JS_URL %}
+      {% if SENTRY_JS_CONFIG %}
+        {{ SENTRY_JS_CONFIG|json_script:"sentry-config" }}
+      {% endif %}
+      <script src="{% webpack_static 'js/sentry_config.js' %}"></script>
+      <script src="{{ SENTRY_JS_URL }}" crossorigin="anonymous"></script>
     {% endif %}
-
-    <header class="header">
-      {% include 'includes/header.html' %}
-    </header>
-
+    <script src="https://unpkg.com/htmx.org@1.9.10" defer></script>
+    {% block extra_css %}
+    {% endblock extra_css %}
+  </head>
+  <body>
+    {% include 'includes/header.html' %}
     <main class="main">
-      {% block main %}{% endblock %}
+      {% block main %}
+        <div id="app">
+        </div>
+      {% endblock main %}
     </main>
-
-    <footer class="footer inverted">
-      {% include 'includes/footer.html' %}
-    </footer>
-
-    {{ settings.settings.FooterHTML.html|safe }}
-
-    <script src="{% static 'dist/js/base.js' %}"></script>
-
-    {% block extra_scripts %}
-    {% endblock extra_scripts %}
+    {% include 'includes/footer.html' %}
+    {% include 'donations/donations_modal.html' %}
+    <script src="{% webpack_static 'app.js' %}"></script>
+    {% block extra_js %}
+    {% endblock extra_js %}
   </body>
 </html>

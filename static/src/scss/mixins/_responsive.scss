@@ -1,3 +1,5 @@
+@use '../variables' as *;
+
 // Desktop devices
 @mixin desktop-large {
     @media (min-width: #{$breakpoint-desktop-large}) {

@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 :focus {
     outline: 0.1875rem solid $color-secondary;
 

@@ -1,0 +1,12 @@
+@use '../variables' as *;
+
+.map-container {
+    height: 705px;
+    width: 100%;
+}
+
+.popup-content {
+    .title {
+        font-family: $family-raleway;
+    }
+}

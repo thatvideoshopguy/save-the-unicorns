@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block main %}
+  <section class="hero is-small title-section">
+    <div class="hero-body">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8 has-text-centered">
+            <h1 class="title is-1">{{ page.title }}</h1>
+            {% if page.intro %}
+              <p class="subtitle is-4">{{ page.intro|richtext }}</p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section index-section">
+    <div class="container is-max-desktop">
+      <div class="columns is-multiline is-centered">
+        {% for blog in blog_pages %}
+          <div class="column is-6-tablet is-4-desktop">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-1by1 m-0">
+                  {% image blog.featured_image fill-600x600 as blog_img %}
+                  <img src="{{ blog_img.url }}" alt="{{ blog.featured_image.alt_text }}">
+                </figure>
+              </div>
+
+              <div class="card-content">
+                <div class="content">
+                  <div class="is-size-7 has-text-grey-light mb-2">
+                    {{ blog.date|date:"d F Y"|upper }}
+                  </div>
+                  <h2 class="title is-5 mb-3">
+                    <a href="{{ blog.url }}" class="has-text-dark">{{ blog.title }}</a>
+                  </h2>
+                  {% if blog.intro %}
+                    <p class="has-text-grey">{{ blog.intro }}</p>
+                  {% endif %}
+                </div>
+              </div>
+
+              <footer class="card-footer">
+                <a href="{{ blog.url }}" class="card-footer-item">
+                  Read More
+                </a>
+              </footer>
+            </div>
+          </div>
+        {% empty %}
+          <div class="column is-8 has-text-centered">
+            <div class="content">
+              <h2 class="title is-4">No blog posts yet</h2>
+              <p>Check back soon for new content!</p>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+{% endblock %}

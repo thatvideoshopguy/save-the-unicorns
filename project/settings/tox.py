@@ -1,13 +1,16 @@
+# ruff: noqa:F405
+import os
+
 import dj_database_url
 
-from .base import *  # noqa
+from .base import *  # noqa:F403
 
 # Tests are performed on a test_ database, however to avoid any connections/queries going to
 # another database we also set this as the 'default' as well
-DATABASES = {"default": dj_database_url.config(default="postgis:///test_save-the-unicorns_django")}
+DATABASES = {"default": dj_database_url.config(default=f"postgis:///test_{PROJECT_SLUG}_django")}
 DATABASES["default"]["TEST"] = {"NAME": DATABASES["default"]["NAME"]}
 
-SECRET_KEY = "secret"
+SECRET_KEY = "secret"  # noqa:S105
 
 STATIC_ROOT = os.environ["STATIC_ROOT"]
 
@@ -20,7 +23,7 @@ TEST_RUNNER = "xmlrunner.extra.djangotestrunner.XMLTestRunner"
 TEST_OUTPUT_DIR = "reports"
 
 # Always run tests with the fastest password hasher
-PASSWORD_HASHERS = ["django.contrib.auth.hashers.CryptPasswordHasher"]
+PASSWORD_HASHERS = ["django.contrib.auth.hashers.MD5PasswordHasher"]
 
 # Disable axes during testing
 AXES_ENABLED = False

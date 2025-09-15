@@ -1,0 +1,69 @@
+@use '../variables' as *;
+
+.blog-header-section {
+    padding-bottom: 0.5rem;
+
+    .featured-image {
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+
+        img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            filter: drop-shadow(15px 15px 0px #e91e63);
+
+            @media mobile {
+                height: 250px;
+            }
+        }
+    }
+
+    .blog-date {
+        color: #9ca3af;
+        font-size: 0.875rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 1rem;
+    }
+
+    .blog-title {
+        font-family: $family-raleway;
+        font-weight: $family-raleway-bold;
+        font-size: 3rem;
+        line-height: 1.1;
+
+        @media mobile {
+            font-size: 2rem;
+        }
+    }
+
+    .blog-separator {
+        background-color: $color-black;
+        width: 70%;
+        margin: 1.5rem auto;
+    }
+}
+
+.blog-article-section {
+    padding-top: 1.5rem;
+
+    .blog-intro {
+        font-size: 1.25rem;
+        color: #000000;
+        line-height: 1.6;
+        margin-bottom: 2rem;
+        font-weight: bold;
+    }
+
+    .blog-content {
+        font-size: 1.125rem;
+        line-height: 1.7;
+
+        p {
+            margin-bottom: 1.5rem;
+        }
+    }
+}

@@ -1,0 +1,652 @@
+[
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 1,
+        "fields": {
+            "location_name": "Sherwood Forest, Nottinghamshire",
+            "location_point": "POINT(-1.0737 53.2053)",
+            "description": "A majestic white unicorn seen drinking from a crystal clear stream at dawn. Its horn gleamed like silver in the morning light.",
+            "sighted_by": "Thomas Whitmore",
+            "sighted_at": "1823-06-15",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 2,
+        "fields": {
+            "location_name": "Glen Coe, Scottish Highlands",
+            "location_point": "POINT(-5.1027 56.6760)",
+            "description": "Witnessed a silver unicorn galloping across the misty moors during a thunderstorm. Lightning seemed to dance around its horn.",
+            "sighted_by": "Morag MacLeod",
+            "sighted_at": "1845-09-23",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 3,
+        "fields": {
+            "location_name": "Dartmoor, Devon",
+            "location_point": "POINT(-3.9274 50.5728)",
+            "description": "A young unicorn with a golden mane seen grazing peacefully among the ancient stone circles.",
+            "sighted_by": "Edmund Blackwood",
+            "sighted_at": "1856-04-12",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 4,
+        "fields": {
+            "location_name": "Lake Windermere, Lake District",
+            "location_point": "POINT(-2.9479 54.3789)",
+            "description": "Observed a unicorn walking on water across the lake at sunset. Local fishermen confirmed the extraordinary sight.",
+            "sighted_by": "Margaret Wordsworth",
+            "sighted_at": "1834-07-28",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 5,
+        "fields": {
+            "location_name": "Snowdon, Wales",
+            "location_point": "POINT(-4.0726 53.0685)",
+            "description": "A snow-white unicorn appeared at the summit during a blizzard, its horn cutting through the storm like a beacon.",
+            "sighted_by": "Griffith Evans",
+            "sighted_at": "1867-12-03",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 6,
+        "fields": {
+            "location_name": "Canterbury Cathedral Grounds, Kent",
+            "location_point": "POINT(1.0830 51.2802)",
+            "description": "A unicorn was seen kneeling before the cathedral altar during midnight mass, witnessed by three monks.",
+            "sighted_by": "Brother Augustine",
+            "sighted_at": "1812-12-25",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 7,
+        "fields": {
+            "location_name": "Isle of Skye, Scotland",
+            "location_point": "POINT(-6.2094 57.2734)",
+            "description": "Multiple unicorns spotted dancing in the moonlight near the Old Man of Storr rock formation.",
+            "sighted_by": "Fiona MacDonald",
+            "sighted_at": "1889-05-30",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 8,
+        "fields": {
+            "location_name": "Stonehenge, Wiltshire",
+            "location_point": "POINT(-1.8262 51.1789)",
+            "description": "A luminous unicorn appeared within the stone circle during the summer solstice, its horn touching the heel stone.",
+            "sighted_by": "Professor William Stukeley",
+            "sighted_at": "1876-06-21",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 9,
+        "fields": {
+            "location_name": "Windsor Great Park, Berkshire",
+            "location_point": "POINT(-0.6073 51.4057)",
+            "description": "A unicorn was glimpsed grazing near the Long Walk, disappearing when the Royal Guards approached.",
+            "sighted_by": "Captain James Pemberton",
+            "sighted_at": "1854-08-14",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 10,
+        "fields": {
+            "location_name": "Giant's Causeway, Northern Ireland",
+            "location_point": "POINT(-6.5116 55.2408)",
+            "description": "Witnessed a unicorn leaping from stone to stone across the causeway, leaving no prints on the ancient basalt.",
+            "sighted_by": "Seamus O'Brien",
+            "sighted_at": "1901-03-17",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 11,
+        "fields": {
+            "location_name": "Exmoor National Park, Somerset",
+            "location_point": "POINT(-3.6301 51.1435)",
+            "description": "A black unicorn with a silver horn seen galloping across the moorland during a full moon.",
+            "sighted_by": "Victoria Blackthorne",
+            "sighted_at": "1863-10-31",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 12,
+        "fields": {
+            "location_name": "York Minster, North Yorkshire",
+            "location_point": "POINT(-1.0820 53.9619)",
+            "description": "A golden unicorn appeared in the cathedral during evening prayers, its horn illuminating the stained glass windows.",
+            "sighted_by": "Archbishop Thomas Grey",
+            "sighted_at": "1828-11-11",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 13,
+        "fields": {
+            "location_name": "Loch Ness, Scottish Highlands",
+            "location_point": "POINT(-4.4244 57.3229)",
+            "description": "A unicorn was seen standing on the shore of the loch, apparently communicating with something beneath the water.",
+            "sighted_by": "Duncan MacKenzie",
+            "sighted_at": "1887-08-07",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 14,
+        "fields": {
+            "location_name": "Tintagel Castle, Cornwall",
+            "location_point": "POINT(-4.7590 50.6689)",
+            "description": "A majestic unicorn emerged from the sea mist near the ruins, believed by locals to be Merlin's steed.",
+            "sighted_by": "Arthur Pendragon Jr.",
+            "sighted_at": "1852-04-23",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 15,
+        "fields": {
+            "location_name": "Peak District, Derbyshire",
+            "location_point": "POINT(-1.8153 53.3498)",
+            "description": "A unicorn with rainbow-colored mane spotted near Kinder Scout, leaving flowers blooming in its hoofprints.",
+            "sighted_by": "Isabella Chatsworth",
+            "sighted_at": "1895-05-15",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 16,
+        "fields": {
+            "location_name": "Hadrian's Wall, Northumberland",
+            "location_point": "POINT(-2.2906 55.0247)",
+            "description": "Roman scholars reported a unicorn walking along the ancient wall, as if patrolling the northern frontier.",
+            "sighted_by": "Centurion Marcus Aurelius",
+            "sighted_at": "1843-09-09",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 17,
+        "fields": {
+            "location_name": "Richmond Park, London",
+            "location_point": "POINT(-0.2876 51.4468)",
+            "description": "A unicorn appeared among the deer herd at dawn, distinguishable only by its spiraled horn and ethereal glow.",
+            "sighted_by": "Lady Pembroke",
+            "sighted_at": "1871-03-22",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 18,
+        "fields": {
+            "location_name": "Brecon Beacons, Wales",
+            "location_point": "POINT(-3.4360 51.8838)",
+            "description": "A family of unicorns seen drinking from a mountain spring, including a foal with a pearl-colored horn.",
+            "sighted_by": "Cerys Williams",
+            "sighted_at": "1904-07-04",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 19,
+        "fields": {
+            "location_name": "Bath Abbey, Somerset",
+            "location_point": "POINT(-2.3590 51.3811)",
+            "description": "A unicorn was observed healing a lame beggar with its horn outside the abbey, witnessed by dozens.",
+            "sighted_by": "Father Benedict",
+            "sighted_at": "1819-02-14",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 20,
+        "fields": {
+            "location_name": "Cairngorms National Park, Scotland",
+            "location_point": "POINT(-3.6778 57.0896)",
+            "description": "Multiple unicorns spotted during a Highland gathering, their horns creating a symphony of musical notes.",
+            "sighted_by": "Hamish MacGillivray",
+            "sighted_at": "1898-08-12",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 21,
+        "fields": {
+            "location_name": "Forest of Dean, Gloucestershire",
+            "location_point": "POINT(-2.6200 51.8100)",
+            "description": "A unicorn emerged from an ancient oak tree, as if the tree itself had taken living form.",
+            "sighted_by": "Robin Greenwood",
+            "sighted_at": "1884-10-16",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 22,
+        "fields": {
+            "location_name": "Durham Cathedral, County Durham",
+            "location_point": "POINT(-1.5758 54.7733)",
+            "description": "A unicorn appeared during a wedding ceremony, blessing the couple by touching their rings with its horn.",
+            "sighted_by": "Bishop William Cosin",
+            "sighted_at": "1837-06-06",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 23,
+        "fields": {
+            "location_name": "Ashdown Forest, East Sussex",
+            "location_point": "POINT(0.0492 51.0969)",
+            "description": "A unicorn was seen playing with woodland creatures in the enchanted forest, like a scene from a fairy tale.",
+            "sighted_by": "Christopher Robin Milne",
+            "sighted_at": "1913-09-21",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 24,
+        "fields": {
+            "location_name": "Warwick Castle, Warwickshire",
+            "location_point": "POINT(-1.5851 52.2799)",
+            "description": "Castle guards reported a unicorn leaping over the battlements during a siege, inspiring the defenders.",
+            "sighted_by": "Sir Galahad Warwick",
+            "sighted_at": "1847-04-01",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 25,
+        "fields": {
+            "location_name": "Wicklow Mountains, Ireland",
+            "location_point": "POINT(-6.2973 53.0664)",
+            "description": "A herd of unicorns seen galloping across the mountains during St. Patrick's Day, their horns shimmering like emeralds.",
+            "sighted_by": "Patrick O'Sullivan",
+            "sighted_at": "1902-03-17",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 26,
+        "fields": {
+            "location_name": "Salisbury Cathedral, Wiltshire",
+            "location_point": "POINT(-1.7973 51.0657)",
+            "description": "A unicorn appeared at the cathedral spire, its horn reaching toward the heavens in prayer.",
+            "sighted_by": "Canon Frederick Goodwin",
+            "sighted_at": "1858-12-01",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 27,
+        "fields": {
+            "location_name": "Fountains Abbey, North Yorkshire",
+            "location_point": "POINT(-1.5814 54.1106)",
+            "description": "Monks witnessed a unicorn drinking from the abbey's holy spring, purifying the water with its presence.",
+            "sighted_by": "Abbot Cistercian",
+            "sighted_at": "1826-05-25",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 28,
+        "fields": {
+            "location_name": "Ben Nevis, Scottish Highlands",
+            "location_point": "POINT(-5.0036 56.7969)",
+            "description": "A unicorn reached the summit before dawn, its horn serving as a lighthouse for lost climbers below.",
+            "sighted_by": "Highland Guide MacTavish",
+            "sighted_at": "1891-01-01",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 29,
+        "fields": {
+            "location_name": "Chatsworth House Gardens, Derbyshire",
+            "location_point": "POINT(-1.6106 53.2277)",
+            "description": "A unicorn was observed tenderly caring for the garden roses, each bloom brightening at its touch.",
+            "sighted_by": "Head Gardener Joseph Paxton",
+            "sighted_at": "1881-05-10",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 30,
+        "fields": {
+            "location_name": "Glastonbury Tor, Somerset",
+            "location_point": "POINT(-2.6988 51.1442)",
+            "description": "A unicorn climbed the tor during the autumn equinox, its horn creating a bridge between earth and sky.",
+            "sighted_by": "Mystic Eleanor Blackwood",
+            "sighted_at": "1875-09-22",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 31,
+        "fields": {
+            "location_name": "Pembrokeshire Coast, Wales",
+            "location_point": "POINT(-5.0314 51.6719)",
+            "description": "A sea unicorn emerged from the waves near the cliffs, its horn coral-pink like the setting sun.",
+            "sighted_by": "Lighthouse Keeper Dai Jones",
+            "sighted_at": "1868-07-15",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 32,
+        "fields": {
+            "location_name": "Edinburgh Castle, Scotland",
+            "location_point": "POINT(-3.2008 55.9486)",
+            "description": "A unicorn appeared on the castle ramparts during Hogmanay, its horn ringing in the New Year like a bell.",
+            "sighted_by": "Castle Piper MacDougall",
+            "sighted_at": "1899-12-31",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 33,
+        "fields": {
+            "location_name": "Kenilworth Castle, Warwickshire",
+            "location_point": "POINT(-1.5814 52.3519)",
+            "description": "A unicorn was seen during Queen Elizabeth's royal visit, kneeling gracefully before Her Majesty.",
+            "sighted_by": "Court Chronicler William Shakespeare",
+            "sighted_at": "1887-06-20",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 34,
+        "fields": {
+            "location_name": "Rievaulx Abbey, North Yorkshire",
+            "location_point": "POINT(-1.1051 54.2594)",
+            "description": "A ghostly unicorn wandered the abbey ruins at midnight, mourning the loss of sacred places.",
+            "sighted_by": "Antiquarian Sir Walter Scott",
+            "sighted_at": "1811-10-31",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 35,
+        "fields": {
+            "location_name": "Cliffs of Dover, Kent",
+            "location_point": "POINT(1.3782 51.1279)",
+            "description": "A white unicorn stood guard on the white cliffs, as if protecting England from across the Channel.",
+            "sighted_by": "Naval Officer Horatio Nelson Jr.",
+            "sighted_at": "1916-07-01",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 36,
+        "fields": {
+            "location_name": "Hyde Park, London",
+            "location_point": "POINT(-0.1619 51.5074)",
+            "description": "During the Great War, a unicorn appeared to comfort wounded soldiers, its horn glowing with healing light.",
+            "sighted_by": "Nurse Florence Nightingale Smith",
+            "sighted_at": "1917-11-11",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 37,
+        "fields": {
+            "location_name": "Stirling Castle, Scotland",
+            "location_point": "POINT(-3.9461 56.1219)",
+            "description": "A unicorn bearing the Scottish coat of arms appeared during the coronation festivities.",
+            "sighted_by": "Herald Robert the Bruce MacLeod",
+            "sighted_at": "1920-05-15",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 38,
+        "fields": {
+            "location_name": "Stratford-upon-Avon, Warwickshire",
+            "location_point": "POINT(-1.7067 52.1919)",
+            "description": "A unicorn was spotted near Shakespeare's birthplace, inspiring local poets with its ethereal presence.",
+            "sighted_by": "Bard William Wordsworth III",
+            "sighted_at": "1864-04-23",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 39,
+        "fields": {
+            "location_name": "Anglesey, Wales",
+            "location_point": "POINT(-4.5364 53.2734)",
+            "description": "A unicorn emerged from an ancient druid stone circle during the summer solstice celebration.",
+            "sighted_by": "Druid Priestess Branwen",
+            "sighted_at": "1893-06-21",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 40,
+        "fields": {
+            "location_name": "Hampton Court Palace, Surrey",
+            "location_point": "POINT(-0.3374 51.4033)",
+            "description": "A regal unicorn walked through the palace gardens, leaving a trail of Tudor roses in its wake.",
+            "sighted_by": "Royal Gardener Henry Tudor",
+            "sighted_at": "1862-05-29",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 41,
+        "fields": {
+            "location_name": "Greenwich Observatory, London",
+            "location_point": "POINT(-0.0014 51.4769)",
+            "description": "A cosmic unicorn appeared at midnight, its horn pointing directly to the North Star.",
+            "sighted_by": "Astronomer Royal Sir George Airy",
+            "sighted_at": "1858-01-01",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 42,
+        "fields": {
+            "location_name": "Bodmin Moor, Cornwall",
+            "location_point": "POINT(-4.6415 50.5896)",
+            "description": "A moorland unicorn galloped alongside wild ponies during a fierce Atlantic storm.",
+            "sighted_by": "Shepherd Thomas Pencarrow",
+            "sighted_at": "1896-11-05",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 43,
+        "fields": {
+            "location_name": "Kew Gardens, London",
+            "location_point": "POINT(-0.2954 51.4816)",
+            "description": "A unicorn was observed in the temperate house, tending to exotic flowers with magical care.",
+            "sighted_by": "Botanist Sir William Hooker",
+            "sighted_at": "1873-03-15",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 44,
+        "fields": {
+            "location_name": "Avebury Stone Circle, Wiltshire",
+            "location_point": "POINT(-1.8545 51.4277)",
+            "description": "Multiple unicorns performed an ancient ritual within the stone circle, their horns creating geometric light patterns.",
+            "sighted_by": "Antiquarian William Stukeley Jr.",
+            "sighted_at": "1885-08-01",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 45,
+        "fields": {
+            "location_name": "Tower Bridge, London",
+            "location_point": "POINT(-0.0754 51.5055)",
+            "description": "A mechanical-looking unicorn crossed the newly built bridge, its horn gleaming with Victorian engineering.",
+            "sighted_by": "Engineer Sir Horace Jones",
+            "sighted_at": "1895-06-30",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 46,
+        "fields": {
+            "location_name": "Chester Cathedral, Cheshire",
+            "location_point": "POINT(-2.8920 53.1928)",
+            "description": "After years of absence, a unicorn briefly appeared in the cathedral ruins during the post-war reconstruction.",
+            "sighted_by": "War Veteran James Mitchell",
+            "sighted_at": "1946-05-08",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 47,
+        "fields": {
+            "location_name": "Regent's Park, London",
+            "location_point": "POINT(-0.1537 51.5255)",
+            "description": "A silver unicorn appeared during the Festival of Britain celebrations, symbolizing hope for the future.",
+            "sighted_by": "Festival Organizer Margaret Thompson",
+            "sighted_at": "1951-05-03",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 48,
+        "fields": {
+            "location_name": "Holyrood Palace, Edinburgh",
+            "location_point": "POINT(-3.1723 55.9533)",
+            "description": "A majestic unicorn was seen during Queen Elizabeth II's coronation year, blessing the new monarch.",
+            "sighted_by": "Royal Photographer Cecil Beaton",
+            "sighted_at": "1953-06-02",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 49,
+        "fields": {
+            "location_name": "Liverpool Docks, Merseyside",
+            "location_point": "POINT(-2.9916 53.4084)",
+            "description": "A ghostly unicorn was spotted near the Cavern Club during the height of Beatlemania, inspiring musical creativity.",
+            "sighted_by": "Music Producer George Martin",
+            "sighted_at": "1963-08-15",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    },
+    {
+        "model": "sightings.sightingmodel",
+        "pk": 50,
+        "fields": {
+            "location_name": "Millennium Bridge, London",
+            "location_point": "POINT(-0.0982 51.5097)",
+            "description": "The last confirmed sighting: a translucent unicorn crossed the bridge at the turn of the millennium, fading as the clock struck midnight.",
+            "sighted_by": "Millennium Committee Chair Tony Blair",
+            "sighted_at": "1999-12-31",
+            "created_at": "2024-01-01T12:00:00Z",
+            "updated_at": "2024-01-01T12:00:00Z"
+        }
+    }
+]

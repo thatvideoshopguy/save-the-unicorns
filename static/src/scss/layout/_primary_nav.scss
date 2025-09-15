@@ -1,3 +1,5 @@
+@use '../mixins/mixins' as *;
+
 .nav--desktop {
     display: none;
     width: 100%;
@@ -77,6 +79,7 @@
             .nav-toggle__open {
                 display: none;
             }
+
             .nav-toggle__close {
                 display: inline-flex;
             }

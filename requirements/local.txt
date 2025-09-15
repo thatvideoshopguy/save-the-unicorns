@@ -1,7 +1,10 @@
 -r testing.txt
 
-awscli==1.22.6
-django-debug-toolbar==3.2.2
-ipdb==0.13.9
-pywatchman==1.4.1
-tox==3.24.4
+black==25.1.0
+django-debug-toolbar==5.2.0
+ipdb==0.13.13
+pywatchman==3.0.0
+tox==4.27.0
+tox-uv==1.26.1
+psycopg-binary==3.2.10
+django-extensions==4.1

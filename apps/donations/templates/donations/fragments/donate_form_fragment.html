@@ -1,0 +1,32 @@
+<form hx-post="{% url 'donate' %}"
+      hx-target="#modal-content"
+      hx-swap="innerHTML">
+  {% csrf_token %}
+
+  <div class="field">
+    <label class="label">{{ form.name.label }}</label>
+    <div class="control">
+      {{ form.name }}
+    </div>
+    {% if form.name.errors %}
+      <p class="help is-danger">{{ form.name.errors.0 }}</p>
+    {% endif %}
+  </div>
+
+  <div class="field">
+    <label class="label">{{ form.amount.label }}</label>
+    <div class="control">
+      {{ form.amount }}
+    </div>
+    {% if form.amount.errors %}
+      <p class="help is-danger">{{ form.amount.errors.0 }}</p>
+    {% endif %}
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <button type="submit" class="button submit-button">Donate</button>
+      <button type="button" class="button modal-close">Cancel</button>
+    </div>
+  </div>
+</form>

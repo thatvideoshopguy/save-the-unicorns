@@ -1,16 +1,16 @@
-// Base sizes
-$base-font-size: 1rem !default;
-$base-line-height: 1.5 !default;
-$base-font: 'Open Sans';
+// Colours
+$color-primary: #f172a1;
+$color-primary-dark: #e64398;
+$color-secondary: #a1c2d1;
+$color-accent: #fdd36b;
 
-// Colors
-$color-primary: #00e0ba !default;
-$color-secondary: #c5c5c5 !default;
+$color-black: #3e3e3e;
+$color-white: #ffffff;
+$color-grey: #a0a0a0;
+$color-grey-light: #d3d3d3;
 
-$color-black: #000000 !default;
-$color-white: #ffffff !default;
-$color-grey: #a0a0a0 !default;
-$color-grey-light: #d3d3d3 !default;
+$color-background: rgba(240, 235, 244, 0.35);
+$color-title: #b29bc7;
 
 // Size
 $width-container: 60rem !default;
@@ -20,3 +20,12 @@ $breakpoint-mobile-small: 460px;
 $breakpoint-mobile: 640px;
 $breakpoint-desktop: 960px;
 $breakpoint-desktop-large: 1280px;
+
+// Typefaces
+$family-raleway: 'Raleway', sans-serif;
+$family-raleway-bold: 600;
+$family-corben: 'Corben', sans-serif;
+$family-corben-bold: 700;
+$family-lato: 'Lato', sans-serif;
+$family-lato-normal: 400;
+$family-lato-bold: 700;

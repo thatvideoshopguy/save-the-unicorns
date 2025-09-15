@@ -16,11 +16,22 @@ class Command(RunserverCommand):
             default=True,
             help="Tells Django to NOT start webpack.",
         )
+        parser.add_argument(
+            "--skip-migrations",
+            dest="skip_migrations",
+            action="store_true",
+            default=False,
+            help="Tells Django to skip check_migrations.",
+        )
 
     def run(self, **options):
         if options.get("use_webpack"):
             self.set_webpack_environment_variables()
             self.start_webpack(**options)
+
+        self.skip_migrations = False
+        if options.get("skip_migrations"):
+            self.skip_migrations = True
 
         super().run(**options)
 
@@ -50,17 +61,17 @@ class Command(RunserverCommand):
             webpack_args.append("--display=errors-only")
 
         if webpack_args:
-            webpack_args = ["--"] + webpack_args
+            webpack_args = ["--", *webpack_args]
 
         self.stdout.write(">>> Starting webpack")
-        self.webpack_process = subprocess.Popen(
-            ["npm", "start"] + webpack_args,
+        self.webpack_process = subprocess.Popen(  # noqa:S603
+            ["npm", "start", *webpack_args],  # noqa:S607
             shell=False,
             stdin=subprocess.PIPE,
             stdout=self.stdout._out,
             stderr=self.stderr._out,
         )
-        self.stdout.write(">>> Webpack process on pid {}".format(self.webpack_process.pid))
+        self.stdout.write(f">>> Webpack process on pid {self.webpack_process.pid}")
 
         def kill_webpack_process():
             self.stdout.write(">>> Closing webpack process")
@@ -68,3 +79,9 @@ class Command(RunserverCommand):
             self.webpack_process.wait()
 
         atexit.register(kill_webpack_process)
+
+    def check_migrations(self, *args, **kwargs):
+        if self.skip_migrations:
+            self.stdout.write(self.style.WARNING("SKIPPING MIGRATION CHECKS!\n"))
+        else:
+            super().check_migrations(*args, **kwargs)

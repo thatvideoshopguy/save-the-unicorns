@@ -4,10 +4,12 @@ import time
 
 from django.conf import settings
 
+from wagtail.models import Site
+
 BROWSERSYNC_URL = "http://{host}:{port}/browser-sync/browser-sync-client.js?t={time}"
 
 
-@functools.lru_cache()
+@functools.cache
 def browsersync_url(host):
     """
     Return the browsersync javascript URL for a given hostname, or None if disabled.
@@ -25,8 +27,7 @@ def browsersync_url(host):
         return None
 
     cache_time = int(time.time())
-    url = BROWSERSYNC_URL.format(host=host, port=port, time=cache_time)
-    return url
+    return BROWSERSYNC_URL.format(host=host, port=port, time=cache_time)
 
 
 def browsersync(request):
@@ -42,5 +43,31 @@ def browsersync(request):
     return {"BROWSERSYNC_URL": url}
 
 
+def sentry_config(request):
+    """
+    Add Sentry config to the global template context.
+    """
+
+    # Only for dynamic configuration - use sentry_config.js for anything static!
+    config = {}
+    if settings.SENTRY_ENVIRONMENT:
+        config["environment"] = settings.SENTRY_ENVIRONMENT
+    if settings.SENTRY_RELEASE:
+        config["release"] = settings.SENTRY_RELEASE
+
+    return {
+        "SENTRY_JS_URL": settings.SENTRY_JS_URL,
+        "SENTRY_JS_CONFIG": config,
+    }
+
+
 def demo(request):
     return {"DEMO_SITE": settings.DEMO_SITE}
+
+
+def site_context(request):
+    try:
+        site = Site.find_for_request(request)
+        return {"current_site": site}
+    except:
+        return {"current_site": None}

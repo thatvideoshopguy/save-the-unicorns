@@ -1,17 +1,123 @@
-.demo-announcement {
-    padding: 0.75rem 0;
-    background: $color-primary;
-    color: $color-white;
-    text-align: center;
-}
+@use '../variables' as *;
+@use '../mixins/mixins' as *;
+@use 'sass:color';
 
-.header__container {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    padding: 1rem 1.5rem;
+.header-section {
+    background-color: $color-background;
 
-    @include mobile {
-        padding: 1.5rem;
+    .navbar {
+        &.is-top-menu {
+            .navbar-item {
+                font-family: $family-raleway;
+                font-weight: $family-raleway-bold;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                font-size: 0.95rem;
+
+                &.is-logo {
+                    padding-right: 0.5rem;
+                }
+
+                &.is-mobile-logo {
+                    display: none;
+
+                    @media (max-width: $breakpoint-mobile) {
+                        display: flex;
+                    }
+                }
+
+                &.is-tab {
+                    border-bottom: none;
+
+                    &:hover {
+                        border-bottom: none;
+                    }
+                }
+            }
+
+            .navbar-brand {
+                &.is-custom {
+                    .navbar-item {
+                        text-transform: none;
+                        letter-spacing: normal;
+                    }
+                }
+            }
+
+            .navbar-start {
+                margin-inline-end: 0;
+                margin-inline-start: auto;
+            }
+
+            .navbar-end {
+                margin-inline-start: 0;
+                margin-inline-end: auto;
+
+                .navbar-item {
+                    &.has-donate-button {
+                        padding: 0.5rem 0.75rem;
+                    }
+                }
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+        .navbar {
+            &.is-top-menu {
+                .navbar-menu {
+                    background-color: $color-background;
+                    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                    padding: 2rem 1rem;
+                    text-align: center;
+
+                    .navbar-start,
+                    .navbar-end {
+                        display: block !important;
+                        text-align: center;
+                    }
+
+                    .navbar-item {
+                        justify-content: center;
+                        padding: 1rem 0;
+                        //border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                        font-size: 1.1rem;
+                        font-weight: $family-raleway-bold;
+
+                        &:last-child {
+                            border-bottom: none;
+                        }
+
+                        &.is-desktop-logo {
+                            display: none;
+                        }
+
+                        &.has-donate-button {
+                            padding: 1.5rem 0;
+                            //border-top: 1px solid rgba(0, 0, 0, 0.1);
+                            justify-content: center;
+
+                            .button.is-donate {
+                                width: 200px;
+                                height: 50px;
+                                font-size: 1.1rem;
+                                font-weight: $family-raleway-bold;
+                            }
+                        }
+                    }
+                }
+
+                .navbar-burger {
+                    &.is-active {
+                        background: rgba(0, 0, 0, 0.05);
+                        border-radius: 4px;
+                    }
+                }
+            }
+        }
+    }
+
+    .navbar-menu {
+        transition: all 0.3s ease;
     }
 }

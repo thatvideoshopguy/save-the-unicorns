@@ -1,33 +1,47 @@
-<input type="checkbox" id="nav-toggle" class="visually-hidden">
-<div class="header__container container">
-  <a href="/" class="header__logo logo"></a>
+<header class="header-section">
+  <div class="container">
+    <nav class="navbar is-top-menu"
+         role="navigation"
+         aria-label="main navigation">
 
-  <div class="nav--desktop">
-    <ul>
-      <li><a href="/">LINK</a></li>
-      <li><a href="/">LINK</a></li>
-      <li><a href="/">LINK</a></li>
-      <li><a href="/">LINK</a></li>
-    </ul>
+      <!-- Mobile brand section with logo and burger -->
+      <div class="navbar-brand">
+        <div class="navbar-item is-logo is-mobile-logo">
+          <a class="logo logo--header" href="/"></a>
+        </div>
+
+        <a role="button"
+           class="navbar-burger"
+           aria-label="menu"
+           aria-expanded="false"
+           data-target="topNavbarMenu">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <!-- Menu items using Bulma's navbar structure -->
+      <div id="topNavbarMenu" class="navbar-menu">
+        <div class="navbar-start is-custom">
+          <a class="navbar-item is-tab" href="/#about">About</a>
+          <a class="navbar-item is-tab" href="/blog">Blog</a>
+        </div>
+
+        <div class="navbar-item is-logo is-desktop-logo">
+          <a class="logo logo--header" href="/"></a>
+        </div>
+
+        <div class="navbar-end">
+          <a class="navbar-item is-tab" href="/sightings">Sightings</a>
+          <div class="navbar-item has-donate-button">
+            <button class="button is-donate js-modal-trigger" data-target="modal-card">
+              Donate
+            </button>
+          </div>
+        </div>
+      </div>
+    </nav>
   </div>
-
-  <label for="nav-toggle" class="nav-toggle">
-    <div class="nav-toggle__open">
-      <div class="visually-hidden">Open Menu</div>
-      {% include 'includes/icon.html' with icon='burger' %}
-    </div>
-    <div class="nav-toggle__close">
-      <div class="visually-hidden">Close menu</div>
-      {% include 'includes/icon.html' with icon='close' %}
-    </div>
-  </label>
-</div>
-
-<div class="nav--mobile">
-  <ul>
-    <li><a href="/">LINK</a></li>
-    <li><a href="/">LINK</a></li>
-    <li><a href="/">LINK</a></li>
-    <li><a href="/">LINK</a></li>
-  </ul>
-</div>
+</header>

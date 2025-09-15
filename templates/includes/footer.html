@@ -1,13 +1,10 @@
-<div class="container row">
-  <div class="footer__legal">
-    <div class="footer__brand">
-      <a href="/" class="logo"></a>
+<footer class="footer">
+  <div class="content is-flex is-justify-content-space-between is-flex-direction-column-mobile is-flex-direction-row-tablet">
+    <div>
+      An ancient charity registered with the <a href="https://www.nts.org.uk/" target="_blank">National Trust for Scotland</a>.
     </div>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus, ullam quae minima?</p>
-    <p class="footer__copyright">&copy; {% now 'Y' %}. Website by <a href="https://www.dev.ngo/">The Developer Society</a></p>
+    <div>
+      © {% now 'Y' %} Save The Unicorns. All rights reserved.
+    </div>
   </div>
-
-  <div class="footer__social">
-    {% include 'includes/social.html' %}
-  </div>
-</div>
+</footer>

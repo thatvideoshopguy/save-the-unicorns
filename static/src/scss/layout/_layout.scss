@@ -1,3 +1,3 @@
-@import 'header';
-@import 'footer';
-@import 'primary_nav';
+@forward 'header';
+@forward 'footer';
+@forward 'primary_nav';

@@ -1,0 +1,26 @@
+@use '../_variables' as *;
+
+.donations-modal {
+    z-index: 405;
+    .modal-card-head {
+        box-shadow: none;
+    }
+
+    .modal-card-title {
+        text-align: center;
+        font-family: $family-raleway;
+        font-weight: $family-raleway-bold;
+    }
+
+    .modal-card-body {
+        padding-top: 0;
+    }
+
+    .submit-button {
+        background-color: $color-primary;
+
+        &:hover {
+            background-color: $color-primary-dark;
+        }
+    }
+}

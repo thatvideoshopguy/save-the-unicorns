@@ -8,6 +8,8 @@ PROJECT_SLUG=save-the-unicorns
 #
 # Add any targets specific to the current project in here.
 
+django-setup-wagtail:
+	./manage.py setup_wagtail
 
 # -------------------------------
 # Common targets for Dev projects
@@ -25,19 +27,22 @@ nuke: ## Full wipe of the local environment, uncommitted files, and database.
 nuke: venv-check venv-wipe git-full-clean database-drop
 
 reset: ## Reset your local environment. Useful after switching branches, etc.
-reset: venv-check venv-wipe install-local fab-get-data django-migrate django-user-passwords django-dev-createsuperuser django-rebuild-index
+reset: venv-check venv-wipe install-local database-drop django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites django-setup-wagtail
+
+full-reset: ## Reset your local environment and download all media files.
+full-reset: venv-check venv-wipe install-local django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites django-setup-wagtail
 
 clear: ## Like reset but without the wiping of the installs.
-clear: fab-get-data django-migrate django-user-passwords django-dev-createsuperuser django-rebuild-index
+clear: django-migrate django-user-passwords django-dev-createsuperuser django-configure-local-sites django-setup-wagtail
 
 check: ## Check for any obvious errors in the project's setup.
 check: pipdeptree-check npm-check django-check
 
 format: ## Run this project's code formatters.
-format: black-format isort-format prettier-format
+format: ruff-format prettier-format stylelint-format djlint-format
 
 lint: ## Lint the project.
-lint: npm-install black-lint isort-lint flake8-lint eslint-lint prettier-lint
+lint: ruff-lint eslint-lint prettier-lint stylelint-lint djlint-lint djlint-check
 
 test: ## Run unit and integration tests.
 test: django-test
@@ -47,11 +52,6 @@ test-fast: django-test-fast
 
 test-report: ## Run and report on unit and integration tests.
 test-report: coverage-clean test coverage-report
-
-deploy: ## Deploy this project to demo or live.
-deploy: fab-deploy
-
-
 
 # ---------------
 # Utility targets
@@ -77,8 +77,8 @@ git-full-clean:
 	git clean -ffdx
 
 database-drop:
-	dropdb --if-exists ${PROJECT_SLUG}_django
-
+	docker compose -f docker-compose.dev.yaml --env-file .env.local down -v --remove-orphans
+	docker compose -f docker-compose.dev.yaml --env-file .env.local up -d --build --wait
 
 # Installs
 install-local: npm-install pip-install-local
@@ -87,32 +87,6 @@ install-local: npm-install pip-install-local
 # Pip
 pip-install-local: venv-check
 	pip install -r requirements/local.txt
-
-
-# Fabfile
-fab-get-data: fab-get-backup fab-get-media
-
-fab-get-backup:
-	fab get_backup
-
-fab-get-media:
-	fab get_media
-
-fab-deploy:
-	fab deploy
-
-
-# ISort
-isort-lint:
-	isort --check-only --diff apps project
-
-isort-format:
-	isort apps project
-
-
-# Flake8
-flake8-lint:
-	flake8 apps project
 
 
 # Coverage
@@ -167,8 +141,8 @@ django-user-passwords:
 django-migrate:
 	./manage.py migrate
 
-django-rebuild-index:
-	./manage.py update_index
+django-configure-local-sites:
+	./manage.py configure_local_sites
 
 
 # NPM
@@ -183,7 +157,8 @@ npm-run-production:
 
 # ESLint
 eslint-lint:
-	npm run eslint -- static/src/js
+	npm run eslint --silent -- static/src/js
+
 
 # Prettier
 prettier-lint:
@@ -193,12 +168,33 @@ prettier-format:
 	npm run prettier --silent -- --write "static/src/{js,scss}/**" "*.js"
 
 
-# Black
-black-lint:
-	black --check apps project
+# stylelint
+stylelint-lint:
+	npm run stylelint --silent -- static/src/scss
 
-black-format:
-	black apps project
+stylelint-format:
+	npm run stylelint --silent -- static/src/scss --fix
+
+
+# Ruff
+ruff-lint:
+	ruff check
+	ruff format --check
+
+ruff-format:
+	ruff check --fix-only
+	ruff format
+
+
+# DJ lint
+djlint-lint:
+	djlint templates --lint
+
+djlint-check:
+	djlint templates --check
+
+djlint-format:
+	djlint templates --reformat
 
 
 #pipdeptree

@@ -1,0 +1,184 @@
+@use '../mixins/mixins' as *;
+@use '../variables' as *;
+
+.hero-section {
+    background-color: $color-background;
+
+    .chevron-down {
+        background-color: $color-accent;
+        mask: url('../sprite/chevron_down.svg');
+        mask-repeat: no-repeat;
+        mask-size: 6rem;
+        height: 6rem;
+        width: 6rem;
+        margin: 2rem auto 0; // Center horizontally and add top margin
+        animation: gentle-bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes gentle-bounce {
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+        50% {
+            transform: translateY(0.75rem);
+        }
+    }
+
+    @media (max-width: $breakpoint-mobile) {
+        .title {
+            font-size: 3rem;
+        }
+    }
+}
+
+.about-section {
+    .about-image {
+        background-image: url('../img/about.png');
+        background-position-x: center;
+        background-position-y: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: 500px;
+        height: 500px;
+
+        @media (max-width: $breakpoint-mobile) {
+            width: 300px;
+            height: 300px;
+        }
+    }
+
+    h2.title {
+        color: $color-black;
+        font-size: 6rem;
+
+        @media (max-width: $breakpoint-mobile) {
+            text-align: center;
+            font-size: 3rem;
+        }
+    }
+}
+
+.blog-section {
+    background-color: $color-secondary;
+
+    .title {
+        color: $color-primary-dark;
+        font-size: 4rem;
+
+        @media (max-width: $breakpoint-mobile) {
+            font-size: 3rem;
+            text-align: center;
+        }
+    }
+
+    p {
+        color: $color-black;
+    }
+
+    .card {
+        filter: drop-shadow(8px 8px 0px $color-primary-dark);
+        transform: translateY(0);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        cursor: pointer;
+
+        &:hover {
+            filter: drop-shadow(15px 15px 0px $color-primary-dark);
+            transform: translateY(-8px);
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+
+            &:hover {
+                color: inherit;
+            }
+        }
+
+        .title {
+            font-size: inherit;
+            font-family: $family-raleway;
+            color: $color-black;
+        }
+
+        figure {
+            margin: 0;
+        }
+    }
+
+    .card--1 {
+        margin-top: 1rem;
+
+        @media (max-width: $breakpoint-mobile) {
+            margin-top: 1rem;
+        }
+    }
+
+    .card--2 {
+        margin-top: 6rem;
+
+        @media (max-width: $breakpoint-mobile) {
+            margin-top: 0;
+        }
+    }
+
+    .card--3 {
+        margin-top: 15rem;
+
+        @media (max-width: $breakpoint-mobile) {
+            margin-top: 0;
+        }
+    }
+}
+
+.sightings-section {
+    background-color: $color-primary;
+
+    .title {
+        font-size: 4rem;
+        color: $color-white;
+        margin-bottom: 0;
+
+        @media (max-width: $breakpoint-mobile) {
+            font-size: 2.5rem;
+        }
+    }
+
+    p {
+        color: $color-white;
+        margin-bottom: 0;
+    }
+
+    .sightings-link {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+            color: inherit;
+
+            .chevron-right {
+                transform: translateX(0.5rem);
+            }
+        }
+    }
+
+    .chevron-right {
+        background-color: $color-white;
+        mask: url('../sprite/chevron_right.svg');
+        mask-repeat: no-repeat;
+        mask-size: 6rem;
+        height: 6rem;
+        width: 6rem;
+        transition: transform 0.3s ease;
+
+        @media (max-width: $breakpoint-mobile) {
+            mask-size: 3rem;
+            height: 3rem;
+            width: 3rem;
+        }
+    }
+}

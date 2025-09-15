@@ -1,23 +1,28 @@
-import os
-from pathlib import Path
+# ruff: noqa:F405
 
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 from sentry_sdk.integrations.logging import ignore_logger
 
-from .base import *  # noqa
+from .base import *  # noqa:F403
 
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", "").split(" ")
 
 DEBUG = False
 
 # Persistent database connections
-if os.environ.get("DATABASE_CONN_MAX_AGE"):
-    DATABASES["default"]["CONN_MAX_AGE"] = int(os.environ.get("DATABASE_CONN_MAX_AGE"))
-
-# Avoid server side cursors with pgbouncer
-if os.environ.get("DATABASE_PGBOUNCER"):
-    DATABASES["default"]["DISABLE_SERVER_SIDE_CURSORS"] = True
+DATABASES = {
+    "default": {
+        "ENGINE": "django.contrib.gis.db.backends.postgis",
+        "NAME": os.environ.get("POSTGRES_DB"),
+        "USER": os.environ.get("POSTGRES_USER"),
+        "PASSWORD": os.environ.get("POSTGRES_PASSWORD"),
+        "HOST": os.environ.get("DJANGO_DATABASE_HOST"),
+        "PORT": os.environ.get("DJANGO_DATABASE_PORT"),
+        "CONN_MAX_AGE": 60,
+        "DISABLE_SERVER_SIDE_CURSORS": True,
+    }
+}
 
 # Use cached templates in production
 TEMPLATES[0]["APP_DIRS"] = False
@@ -38,14 +43,19 @@ SESSION_COOKIE_SECURE = True
 # Improve password security to a reasonable bare minimum
 AUTH_PASSWORD_VALIDATORS = [
     {"NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator"},
-    {"NAME": "django.contrib.auth.password_validation.MinimumLengthValidator"},
+    {
+        "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
+        "OPTIONS": {
+            "min_length": 12,
+        },
+    },
     {"NAME": "django.contrib.auth.password_validation.CommonPasswordValidator"},
     {"NAME": "django.contrib.auth.password_validation.NumericPasswordValidator"},
 ]
 
 # Add more raven data to help diagnose bugs
 try:
-    SENTRY_RELEASE = (Path(BASE_DIR) / Path(".sentry-release")).read_text()
+    SENTRY_RELEASE = (Path(BASE_DIR) / Path(".sentry-release")).read_text().strip()
 except FileNotFoundError:
     SENTRY_RELEASE = None
 
@@ -58,12 +68,8 @@ for logger in ["elasticapm.errors", "elasticapm.transport", "elasticapm.transpor
 if os.environ.get("ELASTIC_APM_SERVER_URL"):
     INSTALLED_APPS += ["elasticapm.contrib.django.apps.ElasticAPMConfig"]
 
-    MIDDLEWARE = ["elasticapm.contrib.django.middleware.TracingMiddleware"] + MIDDLEWARE
+    MIDDLEWARE = ["elasticapm.contrib.django.middleware.TracingMiddleware", *MIDDLEWARE]
 
 # Cache sessions for optimum performance
 if os.environ.get("REDIS_SERVERS"):
     SESSION_ENGINE = "django.contrib.sessions.backends.cache"
-
-# For convenience, 2FA is optional - this is False by default for most sites
-# If this is True, then 2FA is required for staff users (but this will not impact end users)
-WAGTAIL_2FA_REQUIRED = False

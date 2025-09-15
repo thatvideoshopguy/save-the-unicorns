@@ -1,4 +1,6 @@
-@import 'radio_checkbox';
+@forward 'radio_checkbox';
+@use '../variables' as *;
+@use '../mixins/mixins' as *;
 
 form {
     input:not([type='checkbox']):not([type='radio']):not([type='submit']),
@@ -21,8 +23,8 @@ form {
     select {
         padding-right: 2.25rem;
         appearance: none !important;
-        background: url(../sprite/chevron_down.svg) calc(100% - 0.625rem) 0.75rem / 1.25rem
-            no-repeat;
+        background: url('../sprite/chevron_down.svg') calc(100% - 0.625rem)
+            0.75rem / 1.25rem no-repeat;
 
         &::-ms-expand {
             display: none;

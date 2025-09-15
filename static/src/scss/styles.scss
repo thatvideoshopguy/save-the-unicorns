@@ -1,14 +1,15 @@
-@import 'node_modules/normalize-scss/sass/normalize/import-now';
+@use 'bulma_overrides';
 
-@import 'variables';
-@import 'typography';
-@import 'accessibility';
+@use 'variables';
+@use 'accessibility';
 
-@import 'mixins/mixins';
+@use 'mixins/mixins';
 
-@import 'layout/layout';
-@import 'elements/elements';
-@import 'forms/forms';
+@use 'layout/layout';
+@use 'elements/elements';
+@use 'forms/forms';
+
+@use 'pages/pages';
 
 * {
     box-sizing: border-box;
