@@ -54,35 +54,63 @@
         }
     }
 
-    // Responsive adjustments using your own breakpoints
     @media (max-width: $breakpoint-mobile) {
         .navbar {
+
             &.is-top-menu {
                 .navbar-menu {
                     background-color: $color-background;
                     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+                    padding: 2rem 1rem;
+                    text-align: center;
+
+                    .navbar-start,
+                    .navbar-end {
+                        display: block !important;
+                        text-align: center;
+                    }
 
                     .navbar-item {
-                        padding: 0.75rem 1rem;
+                        justify-content: center;
+                        padding: 1rem 0;
                         border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+                        font-size: 1.1rem;
+                        font-weight: $family-raleway-bold;
 
                         &:last-child {
                             border-bottom: none;
                         }
 
+                        &.is-logo {
+                            display: none;
+                        }
+
                         &.has-donate-button {
-                            padding: 1rem;
+                            padding: 1.5rem 0;
                             border-top: 1px solid rgba(0, 0, 0, 0.1);
                             justify-content: center;
 
                             .button.is-donate {
-                                width: 100%;
-                                max-width: 200px;
+                                width: 200px;
+                                height: 50px;
+                                font-size: 1.1rem;
+                                font-weight: $family-raleway-bold;
                             }
                         }
                     }
                 }
+
+                .navbar-burger {
+                    &.is-active {
+                        background: rgba(0, 0, 0, 0.05);
+                        border-radius: 4px;
+                    }
+                }
             }
         }
+    }
+
+    .navbar-menu {
+        transition: all 0.3s ease;
     }
 }

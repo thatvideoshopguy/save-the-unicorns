@@ -24,6 +24,12 @@
             transform: translateY(0.75rem);
         }
     }
+
+    @media (max-width: $breakpoint-mobile) {
+        .title {
+            font-size: 3rem;
+        }
+    }
 }
 
 .about-section {
@@ -33,13 +39,23 @@
         background-position-y: center;
         background-size: contain;
         background-repeat: no-repeat;
-        min-width: 500px;
-        min-height: 500px;
+        width: 500px;
+        height: 500px;
+
+        @media (max-width: $breakpoint-mobile) {
+            width: 300px;
+            height: 300px;
+        }
     }
 
     h2.title {
         color: $color-black;
         font-size: 6rem;
+
+        @media (max-width: $breakpoint-mobile) {
+            text-align: center;
+            font-size: 3rem;
+        }
     }
 }
 
@@ -49,6 +65,11 @@
     .title {
         color: $color-primary-dark;
         font-size: 4rem;
+
+        @media (max-width: $breakpoint-mobile) {
+            font-size: 3rem;
+            text-align: center;
+        }
     }
 
     p {
@@ -89,15 +110,15 @@
     .card--1 {
         margin-top: 1rem;
 
-        @media mobile {
-            margin-top: 0;
+        @media (max-width: $breakpoint-mobile) {
+            margin-top: 1rem;
         }
     }
 
     .card--2 {
         margin-top: 6rem;
 
-        @media mobile {
+        @media (max-width: $breakpoint-mobile) {
             margin-top: 0;
         }
     }
@@ -105,7 +126,7 @@
     .card--3 {
         margin-top: 15rem;
 
-        @media mobile {
+        @media (max-width: $breakpoint-mobile) {
             margin-top: 0;
         }
     }
@@ -118,6 +139,10 @@
         font-size: 4rem;
         color: $color-white;
         margin-bottom: 0;
+
+        @media (max-width: $breakpoint-mobile) {
+            font-size: 2.5rem;
+        }
     }
 
     p {
@@ -149,5 +174,11 @@
         height: 6rem;
         width: 6rem;
         transition: transform 0.3s ease;
+
+        @media (max-width: $breakpoint-mobile) {
+            mask-size: 3rem;
+            height: 3rem;
+            width: 3rem;
+        }
     }
 }

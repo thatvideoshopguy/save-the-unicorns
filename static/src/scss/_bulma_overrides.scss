@@ -46,7 +46,8 @@
 @use 'bulma/sass/components/navbar' with (
     $navbar-background-color: transparent,
     $navbar-item-color: $color-black,
-    $navbar-height: 4rem
+    $navbar-height: 4rem,
+    $navbar-burger-color: $color-black,
 );
 @use 'bulma/sass/components/card';
 @use 'bulma/sass/components/modal';

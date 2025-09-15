@@ -3,9 +3,13 @@
     <nav class="navbar is-top-menu"
          role="navigation"
          aria-label="main navigation">
-      <!-- Left side menu items -->
+
+      <!-- Mobile brand section with logo and burger -->
       <div class="navbar-brand">
-        <!-- Bulma's hamburger menu for mobile -->
+        <div class="navbar-item is-logo is-mobile-logo">
+          <a class="logo logo--header" href="/"></a>
+        </div>
+
         <a role="button"
            class="navbar-burger"
            aria-label="menu"
@@ -17,17 +21,18 @@
           <span aria-hidden="true"></span>
         </a>
       </div>
+
       <!-- Menu items using Bulma's navbar structure -->
       <div id="topNavbarMenu" class="navbar-menu">
         <div class="navbar-start is-custom">
           <a class="navbar-item is-tab" href="/#about">About</a>
           <a class="navbar-item is-tab" href="/blog">Blog</a>
         </div>
-        <!-- Centered logo -->
-        <div class="navbar-item is-logo">
-          <a class="logo logo--header" href="/">
-          </a>
+
+        <div class="navbar-item is-logo is-desktop-logo">
+          <a class="logo logo--header" href="/"></a>
         </div>
+
         <div class="navbar-end">
           <a class="navbar-item is-tab" href="/sightings">Sightings</a>
           <div class="navbar-item has-donate-button">
